@@ -1,0 +1,197 @@
+:root {
+    --mp-result-border-radius: 10px;
+}
+/* .forijat-cards {
+    --color-1: 31, 75, 112;
+    --color-2: 14, 138, 117;
+    --color-3: 33, 69, 112;
+    --deg: 55deg;
+    --blend-mode: soft-light;
+    --bg-1: none;
+    --bg-2: none;
+    --bg-3: url(../images/bg-leefs.svg) no-repeat left bottom;
+}
+.housing-cards {
+    --color-1: 0, 142, 114;
+    --color-2: 0, 115, 92;
+    --color-3: 13, 143, 117;
+    --deg: 55deg;
+    --blend-mode: none;
+    --bg-1: url(../images/leafs-complete.svg) repeat left bottom;
+    --bg-2: none;
+    --bg-3: none;
+}
+.electricity-cards {
+    --color-1: 33, 69, 112;
+    --color-2: 59, 143, 152;
+    --color-3: 64, 157, 160;
+    --deg: 42deg;
+    --blend-mode: soft-light;
+    --bg-1: url(../images/leef-white-r.svg) no-repeat 264px -148px;
+    --bg-2: url(../images/leef-white-l.svg) no-repeat -193px -81px;
+    --bg-3: url(../images/bg-leefs.svg) no-repeat left bottom;
+}
+.tanfeeth-cards {
+    --color-1: 27, 92, 114;
+    --color-2: 15, 135, 116;
+    --color-3: var(--color-2);
+    --deg: 28deg;
+    --blend-mode: color-dodge;
+    --bg-1: url(../images/leef-green-r.svg) no-repeat 264px -148px;
+    --bg-2: url(../images/leef-green-l.svg) no-repeat -193px -81px;
+    --bg-3: url(../images/bg-leefs.svg) no-repeat left bottom;
+}
+.blood-cards {
+    --color-1: 11 118 114;
+    --color-2: 0 145 116;
+    --color-3: 33, 69, 112;
+    --deg: 270deg;
+    --blend-mode: normal;
+    --bg-1: url(../images/bg-card-header.svg) no-repeat 23px 16px;
+    --bg-2: none;
+    --bg-3: none;
+}
+.Campaign-cards {
+    --color-1: 31, 75, 112;
+    --color-2: 14, 138, 117;
+    --color-3: 33, 69, 112;
+    --deg: 55deg;
+    --blend-mode: soft-light;
+    --bg-1: url(../images/snabel-small.svg) no-repeat top 12px right 9px;
+    --bg-2: url(../images/snabel-small.svg) no-repeat bottom 10px left 10px;
+    --bg-3: none;
+} */
+.chart-bg {
+    background: #f2f2f2;
+    inset: 1px 0 5px 0;
+    z-index: 0;
+}
+.chart-anim {
+    background: #0d8f75;
+    inset-block-end: 5px;
+    inset-inline: 0;
+    z-index: 2;
+}
+.chart-value {
+    display: grid;
+    font-size: 12px;
+    inset: 0;
+    place-content: center;
+    z-index: 3;
+}
+.housing-chart svg {
+    box-shadow: inset 0 -1px 0 #fff;
+}
+.cards-wrapper {
+    position: relative;
+}
+.cards-wrapper .sdad-bill span {
+    direction: ltr;
+    display: inline-table;
+    user-select: all;
+}
+.cards-wrapper .sdad-bill {
+    background-color: rgba(var(--color-3), 0.4);
+    inset-inline-end: 0;
+    margin-block-start: -1rem;
+    position: relative;
+    z-index: 1;
+}
+.card-inner-top .description {
+    color: #525252;
+    justify-content: center !important;
+}
+.share-icon-btn {
+    color: rgba(var(--color-3), 1) !important;
+}
+.card-inner-top {
+    background: transparent
+        linear-gradient(
+            var(--deg),
+            rgba(var(--color-2), 1) 0,
+            rgba(var(--color-1), 1) 100%
+        )
+        0 0 no-repeat padding-box;
+    border-radius: 20px 20px 0 0;
+    height: 15rem !important;
+    overflow: hidden;
+    padding-block-end: 4rem !important;
+    padding: 40px;
+    position: relative;
+}
+.Campaign-cards .card-inner-top {
+    height: 13rem !important;
+    padding-block-end: 3rem !important;
+    padding-block-start: 3rem !important;
+}
+.card-blood-inner-top {
+    background: transparent
+        linear-gradient(
+            var(--deg),
+            rgb(var(--color-2)) 20%,
+            rgb(var(--color-1)) 105%
+        )
+        0 0 no-repeat padding-box;
+    border-radius: 20px 20px 0 0;
+    padding: 40px;
+    position: relative;
+}
+.housing-cards .card-inner-top {
+    padding-block-end: 40px !important;
+}
+.cards-wrapper circle {
+    stroke: rgba(var(--color-3), 1) !important;
+    fill: #f2f2f2 !important;
+}
+.Campaign-cards .card-inner-top:after,
+.Campaign-cards .card-inner-top:before,
+.tanfeeth-cards .card-inner-top:after,
+.tanfeeth-cards .card-inner-top:before {
+    opacity: 0.7;
+}
+.card-blood-inner-top:after,
+.card-blood-inner-top:before,
+.card-inner-top .bg-helper:after,
+.card-inner-top .bg-helper:before,
+.card-inner-top:after,
+.card-inner-top:before {
+    content: "";
+    inset: 0;
+    mix-blend-mode: var(--blend-mode);
+    position: absolute;
+}
+.card-blood-inner-top:before,
+.card-inner-top:before {
+    background: var(--bg-1);
+}
+.card-blood-inner-top:before {
+    background-size: 74px;
+}
+.card-inner-top:after {
+    background: var(--bg-2);
+}
+.blood-cards .card-inner-top:before {
+    transform: rotate(180deg);
+}
+.blood-cards .card-blood-inner-top:after,
+.blood-cards .card-blood-inner-top:before {
+    opacity: 0.4;
+}
+.Campaign-cards .card-inner-top .bg-helper:after,
+.tanfeeth-cards .card-inner-top .bg-helper:after {
+    mix-blend-mode: soft-light;
+}
+.card-inner-top .bg-helper:after {
+    background: var(--bg-3);
+    inset-block-end: -73px;
+    opacity: 0.2;
+    transform: rotate(15deg);
+}
+.forijat-cards .card-inner-top .bg-helper:after {
+    transform: none;
+}
+.Campaign-cards .card-inner-top:after,
+.Campaign-cards .card-inner-top:before {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}

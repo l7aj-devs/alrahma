@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="40px" viewBox="0 0 40 40" version="1.1">
+<g id="surface1">
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 16 6 L 16 7 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 16 13 L 16 14 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 17 7 L 15.5 7 C 14.7 7 14 7.7 14 8.5 C 14 9.3 14.7 10 15.5 10 L 16.5 10 C 17.3 10 18 10.7 18 11.5 C 18 12.3 17.3 13 16.5 13 L 15 13 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 23 10 C 23 13.865625 19.865625 17 16 17 C 12.134375 17 9 13.865625 9 10 C 9 6.134375 12.134375 3 16 3 C 19.865625 3 23 6.134375 23 10 Z M 23 10 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 16 29 L 16 17 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 14 22 C 16.5 24.5 16 29 16 29 C 16 29 11.5 29.5 9 27 C 6.5 24.5 7 20 7 20 C 7 20 11.5 19.5 14 22 Z M 14 22 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+<path style="fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(79.215686%,61.960784%,40%);stroke-opacity:1;stroke-miterlimit:10;" d="M 18 22 C 15.5 24.5 16 29 16 29 C 16 29 20.5 29.5 23 27 C 25.5 24.5 25 20 25 20 C 25 20 20.5 19.5 18 22 Z M 18 22 " transform="matrix(1.25,0,0,1.25,0,0)"/>
+</g>
+</svg>

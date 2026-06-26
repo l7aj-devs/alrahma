@@ -1,0 +1,298 @@
+@font-face {
+    font-family: BerytusW23Light;
+    src: url(../fonts/ARBFONTS-DINNEXTLTARABIC-LIGHT-2-2.TTF);
+}
+@font-face {
+    font-family: BerytusW23Regular;
+    src: url(../fonts/ARBFONTS-DINNEXTLTARABIC-REGULAR-4.TTF);
+}
+@font-face {
+    font-family: BerytusW23SemiBold;
+    src: url(../fonts/ARBFONTS-DINNEXTLTARABIC-MEDIUM-4.TTF);
+}
+@font-face {
+    font-family: ARBFONTS-DINNEXTLTARABIC-BOLD-4;
+    src: url(../fonts/ARBFONTS-DINNEXTLTARABIC-BOLD-4.TTF);
+}
+.font-light {
+    font-family: BerytusW23Light;
+}
+.font-regular {
+    font-family: BerytusW23Regular;
+}
+.font-semibold {
+    font-family: BerytusW23SemiBold;
+}
+.font-bold {
+    font-family: ARBFONTS-DINNEXTLTARABIC-BOLD-4;
+}
+:root {
+    --mp-result-border-radius: 10px;
+}
+.home-page {
+    color: #1878CE;
+}
+.home-page .slider {
+    background-color: #fff;
+    height: 90vh;
+    position: relative;
+}
+.home-page .slider .content {
+    color: #fff;
+    inset: 0;
+    padding-block-end: unset;
+    position: absolute;
+    transform: unset;
+}
+.home-page .slider .content .carousel-items .description {
+    font-size: 26px;
+    margin: 20px auto 30px;
+    max-width: 442px;
+}
+.home-page .slider .content .carousel-items h1 {
+    font-family: AdelleSansARA-Semibold;
+    font-size: 50px;
+}
+.home-page .slider .content .carousel-items .btn {
+    border-radius: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.2s linear;
+}
+.home-page .slider .content .carousel-items .btn:hover {
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.home-page .slider .background-wrapper {
+    background: url(../images/homepage-section-1-bg.png) no-repeat 50% fixed;
+    background-size: cover;
+}
+.home-page .carousel-item.active .carousel-content * {
+    inset-block-end: 0;
+    opacity: 1;
+}
+.home-page .carousel-item.active .carousel-content h1 {
+    transition-delay: 0.3s;
+}
+.home-page .carousel-item.active .carousel-content p {
+    transition-delay: 0.6s;
+}
+.home-page .carousel-item.active .carousel-content a {
+    transition-delay: 0.9s;
+}
+.home-page .carousel-content {
+    inset-inline: 0;
+}
+.home-page .carousel-content * {
+    inset-block-end: -30px;
+    opacity: 0;
+    position: relative;
+    transition: inset 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
+.home-page .card {
+    border: 0;
+    border-radius: 25px;
+    font-weight: 100;
+}
+.home-page .card .price-details {
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    color: #ccc;
+    display: flex;
+    flex: 50%;
+    font-size: 13px;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.home-page .card .price-details input {
+    border: none;
+    color: #1878CE;
+    font-size: 14px;
+    height: 30px;
+    outline: none;
+    width: 75%;
+}
+.home-page .card .price-details input:-moz-placeholder,
+.home-page .card .price-details input:-ms-input-placeholder {
+    padding-block-start: 4px;
+}
+.home-page .card .price-details input::-moz-placeholder,
+.home-page .card .price-details input::-webkit-input-placeholder {
+    padding-block-start: 4px;
+}
+.home-page .card .btn {
+    font-weight: inherit;
+}
+.home-page .card h6 {
+    font-family: AdelleSansARA-Semibold;
+    font-size: 20px;
+    margin: 0;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+.home-page .card .share-icon-btn {
+    color: #2865dd;
+    font-size: 22px;
+    line-height: 0;
+    padding: 0;
+}
+.home-page .statistics {
+    background-color: #8c837a;
+    background-image: url(../../assets/imgs/small_banners/about_banner.jpg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    min-height: 526px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.home-page .statistics:before {
+    background-color: #083ca5;
+    background: linear-gradient(175deg, #1878CE, #DF9D69);
+    content: "";
+    display: block;
+    height: 100%;
+    inset-block-start: 0;
+    opacity: 0.9;
+    position: absolute;
+    width: 100%;
+}
+.home-page .statistics .box {
+    background-color: hsla(0, 0%, 100%, 0.1);
+    border-radius: 16px;
+}
+.home-page .statistics .box .col-md-4 {
+    border-inline-end: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.home-page .statistics .box .col-md-4:nth-last-child(2) {
+    border-width: 0;
+}
+.home-page .statistics .box .icon {
+    background: hsla(0, 0%, 100%, 0.36);
+    border-radius: 30px;
+    color: #1878CE;
+    height: 45px;
+    padding: 7px 0;
+    width: 45px;
+}
+.home-page .statistics .box .title {
+    color: #fff;
+    font-size: 16px;
+}
+.home-page .statistics .box .amount {
+    font-size: 24px;
+}
+.home-page .statistics .box .currency {
+    font-size: 20px;
+}
+.home-page .statistics > .container {
+    min-height: 526px;
+    padding: 30px 0 10px;
+}
+@media (max-width: 767px) {
+    .home-page .statistics .box {
+        margin-block-end: 3rem !important;
+        margin-inline: 5%;
+    }
+    .home-page .statistics .box > .col-md-4 {
+        border-width: 0;
+        margin-block-end: 2rem;
+        position: relative;
+    }
+    .home-page .statistics .box > .col-md-4:nth-child(3):after {
+        display: none;
+    }
+    .home-page .statistics .box > .col-md-4:after {
+        background: hsla(0, 0%, 100%, 0.1);
+        content: "";
+        height: 1px;
+        inset-block-end: 0;
+        inset-inline-end: 10%;
+        position: absolute;
+        width: 80%;
+    }
+}
+.home-page .sponsers .sponser-icons {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+@media (max-width: 575px) {
+    .home-page .slider .content {
+        inset-block-end: 0;
+        inset-block-start: 0;
+        padding-block-end: 0;
+        transform: unset;
+    }
+    .home-page .slider .content .swiper-pagination {
+        inset-block-end: 10px;
+    }
+}
+@media (max-width: 1199px) {
+    .home-page .slider .content {
+        inset-block-end: 0;
+        inset-block-start: 0;
+        padding-block-end: unset;
+        transform: unset;
+    }
+    .home-page .slider .content .carousel-items h1 {
+        font-size: 50px;
+        margin-block-end: 20px;
+    }
+    .home-page .slider .content .carousel-items .description {
+        font-size: 16px;
+        margin-block-end: 34px;
+    }
+}
+@media (max-width: 991px) {
+    .home-page .card {
+        border: 0;
+        border-radius: 25px;
+        font-weight: 100;
+    }
+    .home-page .card .price-details {
+        flex: 45%;
+    }
+    .home-page .slider .content h1 {
+        text-align: center;
+    }
+    .home-page .slider .content .carousel-items .description {
+        font-size: 16px;
+    }
+    .home-page .slider .content .carousel-items h1 {
+        font-size: 32px;
+    }
+    .home-page .slider .content .carousel-items .sliderContent {
+        background: transparent;
+        color: #fff;
+        inset-block-start: -130px;
+        inset-inline: 0;
+        margin-block-start: 80px;
+        padding: 20px;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+}
+@media (max-width: 767px) {
+    .home-page .slider {
+        height: 100vh;
+    }
+    .home-page .slider .content {
+        height: 100vh;
+        inset-block-end: 0;
+        inset-block-start: 0;
+        padding-block-end: 0;
+        transform: unset;
+    }
+    .home-page .slider .swiper-slide h1 {
+        font-size: 32px;
+    }
+    .home-page > .slider .swiper-button-next,
+    .home-page > .slider .swiper-button-prev {
+        display: none;
+    }
+}

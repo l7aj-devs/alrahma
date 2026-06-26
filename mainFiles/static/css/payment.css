@@ -1,0 +1,151 @@
+:root {
+    --mp-result-border-radius: 10px;
+}
+.payment-title {
+    color: #666;
+}
+.form-control::placeholder {
+    color: #d9d9d9;
+}
+.fa-apple-pay {
+    color: #666;
+}
+.payment-method-wrapper {
+    background-color: rgba(64, 157, 160, 0.05) !important;
+    border: 1px solid #188BDB !important;
+    transition: all 0.1s ease;
+}
+.payment-method-wrapper .payment-title {
+    color: #188BDB !important;
+}
+.payment-method-wrapper .fa-apple-pay {
+    color: #188BDB !important;
+}
+#paymentOptions .just-validate-error-label {
+    font-size: 14px !important;
+}
+#paymentOptions [type="radio"]:checked,
+#paymentOptions [type="radio"]:not(:checked) {
+    position: absolute;
+    right: -9999px;
+}
+#paymentOptions [type="radio"]:checked + label,
+#paymentOptions [type="radio"]:not(:checked) + label {
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 20px;
+    padding-right: 40px;
+    position: relative;
+}
+#paymentOptions [type="radio"]:checked + label:before,
+#paymentOptions [type="radio"]:not(:checked) + label:before {
+    background: #fff;
+    border: 1px solid #999;
+    border-radius: 100%;
+    content: "";
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: -5px;
+    width: 30px;
+}
+#paymentOptions .apple-pay [type="radio"]:checked + label:before,
+#paymentOptions .apple-pay [type="radio"]:not(:checked) + label:before {
+    top: 3px !important;
+}
+#paymentOptions [type="radio"]:checked + label:after,
+#paymentOptions [type="radio"]:not(:checked) + label:after {
+    background: #188BDB;
+    border-radius: 100%;
+    content: "";
+    height: 18px;
+    position: absolute;
+    right: 6px;
+    top: 1px;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    width: 18px;
+}
+#paymentOptions .apple-pay [type="radio"]:checked + label:after,
+#paymentOptions .apple-pay [type="radio"]:not(:checked) + label:after {
+    top: 9px !important;
+}
+#paymentOptions [type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+#paymentOptions [type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+#paymentOptions .cvv-wrapper {
+    display: none !important;
+}
+#paymentOptions .active-card {
+    background-color: #fff;
+    border: 2px solid #188BDB !important;
+}
+#paymentOptions .active-card img {
+    filter: grayscale(0) !important;
+}
+#paymentOptions .active-card .card-data {
+    color: #188BDB !important;
+}
+#paymentOptions .active-card .cvv-wrapper {
+    display: block !important;
+}
+#paymentOptions .active-card .aliase-name {
+    color: #188BDB !important;
+}
+#paymentOptions .active-card .card-num {
+    background-color: #eee;
+    margin-top: 5px;
+}
+#paymentOptions .input-validation-error {
+    border: 2px solid #dc3545 !important;
+}
+#paymentOptions .custom-tooltip__text {
+    border: 0;
+    padding: 12px 12px 12px 0;
+    right: 84px !important;
+    top: -95px;
+    width: 160px;
+}
+#paymentOptions .custom-tooltip__text.main-saved {
+    right: 127px !important;
+}
+@media (max-width: 575.98px) {
+    #paymentOptions .custom-tooltip__text.main-saved {
+        top: -73px;
+    }
+    #paymentOptions .custom-tooltip__text {
+        right: 28px !important;
+        top: -112px;
+        width: 135px;
+    }
+}
+#paymentOptions .custom-tooltip__text.quick {
+    right: 53px !important;
+    top: -95px;
+    width: 110px;
+}
+#paymentOptions .custom-tooltip__text.saved {
+    right: 108px !important;
+    top: -44px;
+    width: 110px;
+}
+#accordionPayment .accordion-button.collapsed span i {
+    transform: rotate(180deg);
+}
+#accordionPayment .collapse.show + .accordion-item {
+    background-color: red !important;
+}
+.payment-methods img {
+    max-width: 65px;
+}
+.payment-methods.quick-donation img {
+    max-width: 35px !important;
+}
