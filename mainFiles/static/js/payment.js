@@ -1491,7 +1491,6 @@
                 );
             });
     }),
-
         E?.addEventListener("click", (e) => {
             const t = document.getElementById("paymentBySavedCard"),
                 s = /^\d{3}$/;

@@ -33,7 +33,6 @@ const code = {
     C32: "bt",// "Bhutan",
     C33: "cn" // "China",
 };
-        
 function initializeSelect2() {    
     let lengthCountryCode = $(".country-code").length;
     if ($("#details_donation").length) {
@@ -48,13 +47,11 @@ function initializeSelect2() {
             templateResult: formatState
         });
     }
-   
     $(".select2-selection__arrow").text("");
     // $(".select2-selection__arrow").addClass("fas fa-chevron-down").attr("aria-hidden", "true");
     $('.country-code').off('change').on('change', function(){
         showOnlyCountryCode(this)
     })
-
     $('.country-code').off('select2:open').on('select2:open', function(){
         const container = this.parentElement.offsetWidth;
         const select2Width = document.querySelector('.select2-dropdown');
@@ -62,7 +59,6 @@ function initializeSelect2() {
                 select2Width.style.setProperty('--select2-width', `${container}px`);
         }, 0)
     })
-
     $('.country-code').off('select2:close').on('select2:close', function(){
         onSelectClosed(this)
     })
@@ -70,7 +66,6 @@ function initializeSelect2() {
     countryCodeId.forEach(dropdown => showOnlyCountryCode(dropdown));
     //[...document.querySelectorAll(".input-gifteeNumber")].forEach(phone => phone.onchange = cleanPhoneNumber);
 };
-        
 function formatState (state) {
     if (!state.id) {
         return state.text;
@@ -81,50 +76,36 @@ function formatState (state) {
     );
     return $state;
 };
-
 function showOnlyCountryCode(countryCodeEl){
     [countryCode] = countryCodeEl.options[countryCodeEl.selectedIndex].text.split(" ");
     $(countryCodeEl).next('.select2').find('.select2-selection__rendered').text(countryCode)
 }
-
 $.validator.addMethod("gifteeNumberRequired", $.validator.methods.required, "رقم جوال المهدى إليه مطلوب");
 $.validator.addMethod("gifteeNumberRegex", $.validator.methods.regex, "رقم جوال غير صحيح");
 $.validator.addMethod("gifteeNumberMaxlength", $.validator.methods.maxlength, "رقم جوال غير صحيح");
 $.validator.addMethod("gifteeNumberMinlength", $.validator.methods.minlength, "رقم جوال غير صحيح");
-
 $.validator.addClassRules("input-gifteeNumber", {
     gifteeNumberRequired: true,
     gifteeNumberMaxlength: 9,
     gifteeNumberRegex: '^(5)[0-9]{8}$'
-
 });
-
 function onSelectClosed(countryCodeEl){
-    
     const selectedOptionValue = countryCodeEl.options[countryCodeEl.selectedIndex].value;
     let phoneNumberEl = countryCodeEl.closest(".mobile-container").querySelector(".input-gifteeNumber");
-    
     if (selectedOptionValue == 1) {
-
         $.validator.classRuleSettings['input-gifteeNumber'].gifteeNumberMaxlength = 9;
         $.validator.classRuleSettings['input-gifteeNumber'].gifteeNumberRegex = '^(5)[0-9]{8}$';
-
-
         phoneNumberEl.setAttribute("placeholder", "5xxxxxxxx");
         phoneNumberEl.setAttribute("maxlength", "9");
-
         $.validator.addClassRules(`input-gifteeNumber-${phoneNumberEl.dataset.id}`, {
             gifteeNumberRequired: true,
             gifteeNumberMaxlength: 9,
             gifteeNumberRegex: '^(5)[0-9]{8}$'
         });
-
     } else {
-
         $.validator.classRuleSettings['input-gifteeNumber'].gifteeNumberMaxlength = 13;
         $.validator.classRuleSettings['input-gifteeNumber'].gifteeNumberMinlength = 5;
         $.validator.classRuleSettings['input-gifteeNumber'].gifteeNumberRegex = '^[0-9]{5,13}$';
-
         phoneNumberEl.setAttribute("placeholder", "xxxxxxxx")
         phoneNumberEl.setAttribute("maxlength", "13");
         phoneNumberEl.setAttribute("minlength", "5");
@@ -136,7 +117,6 @@ function onSelectClosed(countryCodeEl){
         });
     }
 }
-
 // $.validator.messages = {
 //     required: "This field is required.",
 //     remote: "Please fix this field.",
@@ -158,14 +138,11 @@ function onSelectClosed(countryCodeEl){
 // $.validator.addMethod("gifteeNumberRequired", $.validator.methods.required, "رقم جوال المهدى إليه مطلوب");
 // $.validator.addMethod("gifteeNumberRegex", $.validator.methods.regex, "رقم جوال غير صحيح");
 // $.validator.addMethod("gifteeNumberMaxlength", $.validator.methods.maxlength, "رقم جوال المهدى إليه غير صحيح");
-
 // $.validator.addClassRules("input-gifteeNumber", {
 //     gifteeNumberRequired: true,
 //     gifteeNumberMaxlength: 9,
 //     gifteeNumberRegex: '^(5)[0-9]{8}$'
-
 // });
-
 // clean input phone number as below:
 // cannot start with zero
 // cannot start with country code
@@ -184,7 +161,6 @@ function onSelectClosed(countryCodeEl){
 //    var x = this.value.replace(reg, "");
 //    this.value = x.replace(/\D/g, "");
 //};
-        
 $(document).ready(function(){
     initializeSelect2();
 });

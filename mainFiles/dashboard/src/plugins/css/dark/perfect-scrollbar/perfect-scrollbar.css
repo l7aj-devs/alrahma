@@ -18,7 +18,6 @@ body.dark .ps {
   touch-action: auto;
   -ms-touch-action: auto;
 }
-
 /*
  * Scrollbar rail styles
  */
@@ -31,7 +30,6 @@ body.dark .ps__rail-x {
   bottom: 0px;
   position: absolute;
 }
-
 body.dark .ps__rail-y {
   display: none;
   opacity: 0;
@@ -41,7 +39,6 @@ body.dark .ps__rail-y {
   left: 0;
   position: absolute;
 }
-
 body.dark .ps--active-x > .ps__rail-x, body.dark .ps--active-y > .ps__rail-y {
   display: block;
   background-color: transparent;
@@ -59,7 +56,6 @@ body.dark .ps .ps__rail-x:hover, body.dark .ps .ps__rail-y:hover, body.dark .ps 
   background-color: transparent;
   opacity: 0.9;
 }
-
 /*
  * Scrollbar thumb styles
  */
@@ -89,7 +85,6 @@ body.dark .ps__rail-y:hover > .ps__thumb-y, body.dark .ps__rail-y:focus > .ps__t
   background-color: #bfc9d4;
   width: 6px;
 }
-
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   body.dark .ps {

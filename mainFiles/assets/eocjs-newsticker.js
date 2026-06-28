@@ -3,14 +3,10 @@
  * Copyright (c) 2024 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
-
 (function($, window, document, undefined) {
   $.fn.eocjsNewsticker = function(options) {
-
     return this.each(function() {
-
       // _______ Options _______
-
       let defaults = {
         speed:      20,
         timeout:    1,
@@ -22,10 +18,7 @@
         direction:  'ltr'      // direction (ltr or rtl)
       };
       let settings = $.extend({}, defaults, options);
-
-
       // _______ Inner Variables _______
-
       let self              =  $(this);
       let content           =  self.html();
       let active            =  'eocjs-newsticker-active';
@@ -37,10 +30,7 @@
       let twoNeedsUpdate    =  false;
       let localWindow       =  $(window);
       let localWindowWidth  =  localWindow.width();
-
-
       // _______ Init _______
-
       function init() {
         if (!self.hasClass(active)) {
           create();
@@ -48,48 +38,31 @@
           self.addClass(active);
         }
       }
-
-
       // _______ Create _______
-
       function create() {
-
         self.addClass('eocjs-newsticker').html('<div class="eocjs-newsticker-container"><div class="eocjs-newsticker-one"></div><div class="eocjs-newsticker-two"></div></div>');
-
         container  =  self.find('.eocjs-newsticker-container');
         one        =  self.find('.eocjs-newsticker-one');
         two        =  self.find('.eocjs-newsticker-two');
         both       =  self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
-
         both.css({[convert('start')]: 0, [convert('end')]: 'auto'});
-
       }
-
-
       // _______ Start _______
-
       function start() {
-
         let updateSource = function(src) {
           return src + (src.indexOf('?') > -1 ? '&' : '?') + 'eocjs_ts=' + Math.floor(Date.now() / 1000);
         };
-
         if (settings.type === 'static') {
-
           content = convert('prefix') + content + convert('suffix');
           run(content, (settings.timeout * 1000));
-
         } else if (settings.type === 'ajax') {
-
           container.prepend('<div class="eocjs-newsticker-loader"></div>');
           $.when(ajax(updateSource(settings.source), settings.fetch)).done(function(data) {
-
             setContent(data);
             container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
               run(content, (settings.timeout * 1000));
               $(this).remove();
             });
-
             setInterval(function() {
               $.when(ajax(updateSource(settings.source), settings.fetch)).done(function(data) {
                 setContent(data);
@@ -97,21 +70,13 @@
                 twoNeedsUpdate = true;
               });
             }, settings.interval * 1000);
-
           });
-
         }
-
       }
-
-
       // _______ Additional function for LTR/RTL conversion _______
-
       function convert(type, data) {
-
         let addition  =  '';
         let dir       =  settings.direction;
-
         if (type === 'prefix') {
           data === undefined ? (dir !== 'rtl' ? addition = '' : addition = settings.divider + ' ') : (dir !== 'rtl' ? addition = data + ' ' : addition = settings.divider + ' ');
         } else if (type === 'suffix') {
@@ -125,38 +90,23 @@
         } else if (type === 'position') {
           addition = (dir !== 'rtl' && data.position().left > 0) || (dir === 'rtl' && (container.width() - (data.position().left + data.width())) > 0);
         }
-
         return addition;
-
       }
-
-
       // _______ Ajax _______
-
       function ajax(source, useFetch) {
-
         if (useFetch) {
-
           return fetch(source).then(function(response) {
             return response.json();
           });
-
         } else {
-
           return $.ajax({
             url:       source,
             dataType:  'json'
           });
-
         }
-
       }
-
-
       // _______ setContent _______
-
       function setContent(data) {
-
         content = '';
         if ($.isPlainObject(data) && !$.isEmptyObject(data)) {
           for (let property in data) {
@@ -179,65 +129,39 @@
         } else {
           content = 'Error: No data found. Check your remote source!';
         }
-
       }
-
-
       // _______ Run _______
-
       function runInit(content) {
-
         update(both, content);
         two.css({[convert('start')]: one.width()});
-
       }
-
       function run(content, timeout) {
-
         runInit(content);
-
         setTimeout(function() {
-
           if (timeout > 0) runInit(content);
-
           let width  =  one.width();
           let speed  =  settings.speed * width;
-
           animateSlide(one, 0, -width, speed);
           animateSlide(two, width, 0, speed);
-
         }, timeout);
-
       }
-
-
       // _______ Update _______
-
       function update(slide, content) {
-
         slide.html(content);
         while (container.width() > slide.width()) {
           slide[convert('update')](convert('update', content));
         }
         slide[convert('update')]('&nbsp;');
-
       }
-
-
       // _______ Animation _______
-
       function animateSlide(slide, start, destination, speed) {
-
         slide.animate(
           {[convert('start')]: destination},
           speed,
           'linear',
           function() {
-
             let width;
-
             if (start === 0) {
-
               if (slide === one && oneNeedsUpdate) {
                 update(one, content);
                 oneNeedsUpdate = false;
@@ -245,34 +169,22 @@
                 update(two, content);
                 twoNeedsUpdate = false;
               }
-
               slide === one ? width = two.width() : width = one.width();
               speed = settings.speed * width;
               slide.css({[convert('start')]: width});
               animateSlide(slide, width, 0, speed);
-
             } else {
-
               slide === one ? width = one.width() : width = two.width();
               speed = settings.speed * width;
               animateSlide(slide, 0, -width, speed);
-
             }
-
           }
         );
-
       }
-
-
       // _______ Resize _______
-
       localWindow.on('resize', function() {
-
         let width = localWindow.width();
-
         if (width != localWindowWidth) {
-
           if (width > localWindowWidth) {
             if (convert('position', one)) {
               update(one, content);
@@ -285,19 +197,11 @@
             oneNeedsUpdate = true;
             twoNeedsUpdate = true;
           }
-
           localWindowWidth = width;
-
         }
-
       });
-
-
       // _______ Init _______
-
       init();
-
     });
-
   };
 })(jQuery, window, document);

@@ -3,9 +3,7 @@
    Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 (function($) { // Hide scope, no $ conflict
-
 	function Calendars() {
 		this.regionalOptions = [];
 		this.regionalOptions[''] = {
@@ -19,13 +17,11 @@
 		this.calendars = {};
 		this._localCals = {};
 	}
-
 	/** Create the calendars plugin.
 		<p>Provides support for various world calendars in a consistent manner.</p>
 	 	@class Calendars
 		@example $.calendars.instance('julian').newDate(2014, 12, 25) */
 	$.extend(Calendars.prototype, {
-
 		/** Obtain a calendar implementation and localisation.
 			@memberof Calendars
 			@param [name='gregorian'] {string} The name of the calendar, e.g. 'gregorian', 'persian', 'islamic'.
@@ -46,7 +42,6 @@
 			}
 			return cal;
 		},
-
 		/** Create a new date - for today if no other parameters given.
 			@memberof Calendars
 			@param year {CDate|number} The date to copy or the year for the date.
@@ -61,7 +56,6 @@
 				this.instance(calendar, language) : calendar)) || this.instance();
 			return calendar.newDate(year, month, day);
 		},
-		
 		/** A simple digit substitution function for localising numbers via the Calendar digits option.
 			@member Calendars
 			@param digits {string[]} The substitute digits, for 0 through 9.
@@ -73,7 +67,6 @@
 				});
 			}
 		},
-		
 		/** Digit substitution function for localising Chinese style numbers via the Calendar digits option.
 			@member Calendars
 			@param digits {string[]} The substitute digits, for 0 through 9.
@@ -96,7 +89,6 @@
 			}
 		}
 	});
-
 	/** Generic date, based on a particular calendar.
 		@class CDate
 		@param calendar {BaseCalendar} The underlying calendar implementation.
@@ -116,7 +108,6 @@
 				replace(/\{0\}/, this._calendar.local.name);
 		}
 	}
-
 	/** Pad a numeric value with leading zeroes.
 		@private
 		@param value {number} The number to format.
@@ -126,9 +117,7 @@
 		value = '' + value;
 		return '000000'.substring(0, length - value.length) + value;
 	}
-
 	$.extend(CDate.prototype, {
-
 		/** Create a new date.
 			@memberof CDate
 			@param [year] {CDate|number} The date to copy or the year for the date (default this date).
@@ -139,7 +128,6 @@
 		newDate: function(year, month, day) {
 			return this._calendar.newDate((year == null ? this : year), month, day);
 		},
-
 		/** Set or retrieve the year for this date.
 			@memberof CDate
 			@param [year] {number} The year for the date.
@@ -148,7 +136,6 @@
 		year: function(year) {
 			return (arguments.length === 0 ? this._year : this.set(year, 'y'));
 		},
-
 		/** Set or retrieve the month for this date.
 			@memberof CDate
 			@param [month] {number} The month for the date.
@@ -157,7 +144,6 @@
 		month: function(month) {
 			return (arguments.length === 0 ? this._month : this.set(month, 'm'));
 		},
-
 		/** Set or retrieve the day for this date.
 			@memberof CDate
 			@param [day] {number} The day for the date.
@@ -166,7 +152,6 @@
 		day: function(day) {
 			return (arguments.length === 0 ? this._day : this.set(day, 'd'));
 		},
-
 		/** Set new values for this date.
 			@memberof CDate
 			@param year {number} The year for the date.
@@ -184,28 +169,24 @@
 			this._day = day;
 			return this;
 		},
-
 		/** Determine whether this date is in a leap year.
 			@memberof CDate
 			@return {boolean} <code>true</code> if this is a leap year, <code>false</code> if not. */
 		leapYear: function() {
 			return this._calendar.leapYear(this);
 		},
-
 		/** Retrieve the epoch designator for this date, e.g. BCE or CE.
 			@memberof CDate
 			@return {string} The current epoch. */
 		epoch: function() {
 			return this._calendar.epoch(this);
 		},
-
 		/** Format the year, if not a simple sequential number.
 			@memberof CDate
 			@return {string} The formatted year. */
 		formatYear: function() {
 			return this._calendar.formatYear(this);
 		},
-
 		/** Retrieve the month of the year for this date,
 			i.e. the month's position within a numbered year.
 			@memberof CDate
@@ -213,56 +194,48 @@
 		monthOfYear: function() {
 			return this._calendar.monthOfYear(this);
 		},
-
 		/** Retrieve the week of the year for this date.
 			@memberof CDate
 			@return {number} The week of the year: 1 to weeks per year. */
 		weekOfYear: function() {
 			return this._calendar.weekOfYear(this);
 		},
-
 		/** Retrieve the number of days in the year for this date.
 			@memberof CDate
 			@return {number} The number of days in this year. */
 		daysInYear: function() {
 			return this._calendar.daysInYear(this);
 		},
-
 		/** Retrieve the day of the year for this date.
 			@memberof CDate
 			@return {number} The day of the year: 1 to days per year. */
 		dayOfYear: function() {
 			return this._calendar.dayOfYear(this);
 		},
-
 		/** Retrieve the number of days in the month for this date.
 			@memberof CDate
 			@return {number} The number of days. */
 		daysInMonth: function() {
 			return this._calendar.daysInMonth(this);
 		},
-
 		/** Retrieve the day of the week for this date.
 			@memberof CDate
 			@return {number} The day of the week: 0 to number of days - 1. */
 		dayOfWeek: function() {
 			return this._calendar.dayOfWeek(this);
 		},
-
 		/** Determine whether this date is a week day.
 			@memberof CDate
 			@return {boolean} <code>true</code> if a week day, <code>false</code> if not. */
 		weekDay: function() {
 			return this._calendar.weekDay(this);
 		},
-
 		/** Retrieve additional information about this date.
 			@memberof CDate
 			@return {object} Additional information - contents depends on calendar. */
 		extraInfo: function() {
 			return this._calendar.extraInfo(this);
 		},
-
 		/** Add period(s) to a date.
 			@memberof CDate
 			@param offset {number} The number of periods to adjust by.
@@ -271,7 +244,6 @@
 		add: function(offset, period) {
 			return this._calendar.add(this, offset, period);
 		},
-
 		/** Set a portion of the date.
 			@memberof CDate
 			@param value {number} The new value for the period.
@@ -281,7 +253,6 @@
 		set: function(value, period) {
 			return this._calendar.set(this, value, period);
 		},
-
 		/** Compare this date to another date.
 			@memberof CDate
 			@param date {CDate} The other date.
@@ -297,14 +268,12 @@
 				this._day - date._day);
 			return (c === 0 ? 0 : (c < 0 ? -1 : +1));
 		},
-
 		/** Retrieve the calendar backing this date.
 			@memberof CDate
 			@return {BaseCalendar} The calendar implementation. */
 		calendar: function() {
 			return this._calendar;
 		},
-
 		/** Retrieve the Julian date equivalent for this date,
 			i.e. days since January 1, 4713 BCE Greenwich noon.
 			@memberof CDate
@@ -312,7 +281,6 @@
 		toJD: function() {
 			return this._calendar.toJD(this);
 		},
-
 		/** Create a new date from a Julian date.
 			@memberof CDate
 			@param jd {number} The Julian date to convert.
@@ -320,14 +288,12 @@
 		fromJD: function(jd) {
 			return this._calendar.fromJD(jd);
 		},
-
 		/** Convert this date to a standard (Gregorian) JavaScript Date.
 			@memberof CDate
 			@return {Date} The equivalent JavaScript date. */
 		toJSDate: function() {
 			return this._calendar.toJSDate(this);
 		},
-
 		/** Create a new date from a standard (Gregorian) JavaScript Date.
 			@memberof CDate
 			@param jsd {Date} The JavaScript date to convert.
@@ -335,7 +301,6 @@
 		fromJSDate: function(jsd) {
 			return this._calendar.fromJSDate(jsd);
 		},
-
 		/** Convert to a string for display.
 			@memberof CDate
 			@return {string} This date as a string. */
@@ -344,7 +309,6 @@
 				'-' + pad(this.month(), 2) + '-' + pad(this.day(), 2);
 		}
 	});
-
 	/** Basic functionality for all calendars.
 		Other calendars should extend this:
 		<pre>OtherCalendar.prototype = new BaseCalendar;</pre>
@@ -352,10 +316,8 @@
 	function BaseCalendar() {
 		this.shortYearCutoff = '+10';
 	}
-
 	$.extend(BaseCalendar.prototype, {
 		_validateLevel: 0, // "Stack" to turn validation on/off
-
 		/** Create a new date within this calendar - today if no parameters given.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to duplicate or the year for the date.
@@ -376,14 +338,12 @@
 			}
 			return new CDate(this, year, month, day);
 		},
-
 		/** Create a new date for today.
 			@memberof BaseCalendar
 			@return {CDate} Today's date. */
 		today: function() {
 			return this.fromJSDate(new Date());
 		},
-
 		/** Retrieve the epoch designator for this date.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -394,7 +354,6 @@
 				$.calendars.local.invalidYear || $.calendars.regionalOptions[''].invalidYear);
 			return (date.year() < 0 ? this.local.epochs[0] : this.local.epochs[1]);
 		},
-
 		/** Format the year, if not a simple sequential number
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to format or the year to format.
@@ -405,7 +364,6 @@
 				$.calendars.local.invalidYear || $.calendars.regionalOptions[''].invalidYear);
 			return (date.year() < 0 ? '-' : '') + pad(Math.abs(date.year()), 4)
 		},
-
 		/** Retrieve the number of months in a year.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -416,7 +374,6 @@
 				$.calendars.local.invalidYear || $.calendars.regionalOptions[''].invalidYear);
 			return 12;
 		},
-
 		/** Calculate the month's ordinal position within the year -
 			for those calendars that don't start at month 1!
 			@memberof BaseCalendar
@@ -430,7 +387,6 @@
 			return (date.month() + this.monthsInYear(date) - this.firstMonth) %
 				this.monthsInYear(date) + this.minMonth;
 		},
-
 		/** Calculate actual month from ordinal position, starting from minMonth.
 			@memberof BaseCalendar
 			@param year {number} The year to examine.
@@ -444,7 +400,6 @@
 				$.calendars.local.invalidMonth || $.calendars.regionalOptions[''].invalidMonth);
 			return m;
 		},
-
 		/** Retrieve the number of days in a year.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -455,7 +410,6 @@
 				$.calendars.local.invalidYear || $.calendars.regionalOptions[''].invalidYear);
 			return (this.leapYear(date) ? 366 : 365);
 		},
-
 		/** Retrieve the day of the year for a date.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to convert or the year to convert.
@@ -469,14 +423,12 @@
 			return date.toJD() - this.newDate(date.year(),
 				this.fromMonthOfYear(date.year(), this.minMonth), this.minDay).toJD() + 1;
 		},
-
 		/** Retrieve the number of days in a week.
 			@memberof BaseCalendar
 			@return {number} The number of days. */
 		daysInWeek: function() {
 			return 7;
 		},
-
 		/** Retrieve the day of the week for a date.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -489,7 +441,6 @@
 				$.calendars.local.invalidDate || $.calendars.regionalOptions[''].invalidDate);
 			return (Math.floor(this.toJD(date)) + 2) % this.daysInWeek();
 		},
-
 		/** Retrieve additional information about a date.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -502,7 +453,6 @@
 				$.calendars.local.invalidDate || $.calendars.regionalOptions[''].invalidDate);
 			return {};
 		},
-
 		/** Add period(s) to a date.
 			Cater for no year zero.
 			@memberof BaseCalendar
@@ -516,7 +466,6 @@
 				$.calendars.local.invalidDate || $.calendars.regionalOptions[''].invalidDate);
 			return this._correctAdd(date, this._add(date, offset, period), offset, period);
 		},
-
 		/** Add period(s) to a date.
 			@memberof BaseCalendar
 			@private
@@ -569,7 +518,6 @@
 				throw e;
 			}
 		},
-
 		/** Correct a candidate date after adding period(s) to a date.
 			Handle no year zero if necessary.
 			@memberof BaseCalendar
@@ -592,7 +540,6 @@
 			}
 			return date.date(ymd[0], ymd[1], ymd[2]);
 		},
-
 		/** Set a portion of the date.
 			@memberof BaseCalendar
 			@param date {CDate} The starting date.
@@ -611,7 +558,6 @@
 			}
 			return date.date(y, m, d);
 		},
-
 		/** Determine whether a date is valid for this calendar.
 			@memberof BaseCalendar
 			@param year {number} The year to examine.
@@ -629,7 +575,6 @@
 			this._validateLevel--;
 			return valid;
 		},
-
 		/** Convert the date to a standard (Gregorian) JavaScript Date.
 			@memberof BaseCalendar
 			@param year {CDate|number} The date to convert or the year to convert.
@@ -642,7 +587,6 @@
 				$.calendars.local.invalidDate || $.calendars.regionalOptions[''].invalidDate);
 			return $.calendars.instance().fromJD(this.toJD(date)).toJSDate();
 		},
-
 		/** Convert the date from a standard (Gregorian) JavaScript Date.
 			@memberof BaseCalendar
 			@param jsd {Date} The JavaScript date.
@@ -650,7 +594,6 @@
 		fromJSDate: function(jsd) {
 			return this.fromJD($.calendars.instance().fromJSDate(jsd).toJD());
 		},
-
 		/** Check that a candidate date is from the same calendar and is valid.
 			@memberof BaseCalendar
 			@private
@@ -682,7 +625,6 @@
 			}
 		}
 	});
-
 	/** Implementation of the Proleptic Gregorian Calendar.
 		See <a href=":http://en.wikipedia.org/wiki/Gregorian_calendar">http://en.wikipedia.org/wiki/Gregorian_calendar</a>
 		and <a href="http://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar">http://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar</a>.
@@ -692,9 +634,7 @@
 	function GregorianCalendar(language) {
 		this.local = this.regionalOptions[language] || this.regionalOptions[''];
 	}
-
 	GregorianCalendar.prototype = new BaseCalendar;
-
 	$.extend(GregorianCalendar.prototype, {
 		/** The calendar name.
 			@memberof GregorianCalendar */
@@ -717,7 +657,6 @@
 		 /** The minimum day number.
 			@memberof GregorianCalendar */
 		minDay: 1,
-
 		/** Localisations for the plugin.
 			Entries are objects indexed by the language code ('' being the default US/English).
 			Each object has the following attributes.
@@ -749,7 +688,6 @@
 				isRTL: false
 			}
 		},
-		
 		/** Determine whether this date is in a leap year.
 			@memberof GregorianCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -761,7 +699,6 @@
 			var year = date.year() + (date.year() < 0 ? 1 : 0); // No year zero
 			return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 		},
-
 		/** Determine the week of the year for a date - ISO 8601.
 			@memberof GregorianCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -775,7 +712,6 @@
 			checkDate.add(4 - (checkDate.dayOfWeek() || 7), 'd');
 			return Math.floor((checkDate.dayOfYear() - 1) / 7) + 1;
 		},
-
 		/** Retrieve the number of days in a month.
 			@memberof GregorianCalendar
 			@param year {CDate|number} The date to examine or the year of the month.
@@ -788,7 +724,6 @@
 			return this.daysPerMonth[date.month() - 1] +
 				(date.month() === 2 && this.leapYear(date.year()) ? 1 : 0);
 		},
-
 		/** Determine whether this date is a week day.
 			@memberof GregorianCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -799,7 +734,6 @@
 		weekDay: function(year, month, day) {
 			return (this.dayOfWeek(year, month, day) || 7) < 6;
 		},
-
 		/** Retrieve the Julian date equivalent for this date,
 			i.e. days since January 1, 4713 BCE Greenwich noon.
 			@memberof GregorianCalendar
@@ -825,7 +759,6 @@
 			return Math.floor(365.25 * (year + 4716)) +
 				Math.floor(30.6001 * (month + 1)) + day + b - 1524.5;
 		},
-
 		/** Create a new date from a Julian date.
 			@memberof GregorianCalendar
 			@param jd {number} The Julian date to convert.
@@ -845,7 +778,6 @@
 			if (year <= 0) { year--; } // No year zero
 			return this.newDate(year, month, day);
 		},
-
 		/** Convert this date to a standard (Gregorian) JavaScript Date.
 			@memberof GregorianCalendar
 			@param year {CDate|number} The date to convert or the year to convert.
@@ -867,7 +799,6 @@
 			jsd.setHours(jsd.getHours() > 12 ? jsd.getHours() + 2 : 0);
 			return jsd;
 		},
-
 		/** Create a new date from a standard (Gregorian) JavaScript Date.
 			@memberof GregorianCalendar
 			@param jsd {Date} The JavaScript date to convert.
@@ -876,17 +807,12 @@
 			return this.newDate(jsd.getFullYear(), jsd.getMonth() + 1, jsd.getDate());
 		}
 	});
-
 	// Singleton manager
 	$.calendars = new Calendars();
-
 	// Date template
 	$.calendars.cdate = CDate;
-
 	// Base calendar template
 	$.calendars.baseCalendar = BaseCalendar;
-
 	// Gregorian calendar implementation
 	$.calendars.calendars.gregorian = GregorianCalendar;
-
 })(jQuery);

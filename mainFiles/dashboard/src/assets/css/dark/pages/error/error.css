@@ -15,7 +15,6 @@ body.dark .theme-logo {
 body.dark:before {
   display: none;
 }
-
 body.dark.error {
   color: #888ea8;
   height: 100%;

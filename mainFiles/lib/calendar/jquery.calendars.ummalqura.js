@@ -4,9 +4,7 @@
    Modified by Binnooh.com & www.elm.sa - 2014 - Added dates back to 1276 Hijri year.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 (function ($) { // Hide scope, no $ conflict
-
 	/** Implementation of the UmmAlQura or 'saudi' calendar.
 		See also <a href="http://en.wikipedia.org/wiki/Islamic_calendar#Saudi_Arabia.27s_Umm_al-Qura_calendar">http://en.wikipedia.org/wiki/Islamic_calendar#Saudi_Arabia.27s_Umm_al-Qura_calendar</a>.
 		<a href="http://www.ummulqura.org.sa/About.aspx">http://www.ummulqura.org.sa/About.aspx</a>
@@ -16,9 +14,7 @@
 	function UmmAlQuraCalendar(language) {
 		this.local = this.regionalOptions[language || ''] || this.regionalOptions[''];
 	}
-
 	UmmAlQuraCalendar.prototype = new $.calendars.baseCalendar;
-
 	$.extend(UmmAlQuraCalendar.prototype, {
 		/** The calendar name.
 			@memberof UmmAlQuraCalendar */
@@ -37,7 +33,6 @@
 		/** The minimum day number.
 			@memberof UmmAlQuraCalendar */
 		minDay: 1,
-
 		/** Localisations for the plugin.
 			Entries are objects indexed by the language code ('' being the default US/English).
 			Each object has the following attributes.
@@ -68,7 +63,6 @@
 				isRTL: true
 			}
 		},
-
 		/** Determine whether this date is in a leap year.
 			@memberof UmmAlQuraCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -78,7 +72,6 @@
 			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
 			return (this.daysInYear(date.year()) === 355);
 		},
-
 		/** Determine the week of the year for a date.
 			@memberof UmmAlQuraCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -92,7 +85,6 @@
 			checkDate.add(-checkDate.dayOfWeek(), 'd');
 			return Math.floor((checkDate.dayOfYear() - 1) / 7) + 1;
 		},
-
 		/** Retrieve the number of days in a year.
 			@memberof UmmAlQuraCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -105,7 +97,6 @@
 			}
 			return daysCount;
 		},
-
 		/** Retrieve the number of days in a month.
 			@memberof UmmAlQuraCalendar
 			@param year {CDate|number} The date to examine or the year of the month.
@@ -125,7 +116,6 @@
 			}
 			return 30; // Unknown outside
 		},
-
 		/** Determine whether this date is a week day.
 			@memberof UmmAlQuraCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
@@ -136,7 +126,6 @@
 		weekDay: function (year, month, day) {
 			return this.dayOfWeek(year, month, day) !== 5;
 		},
-
 		/** Retrieve the Julian date equivalent for this date,
 			i.e. days since January 1, 4713 BCE Greenwich noon.
 			@memberof UmmAlQuraCalendar
@@ -151,7 +140,6 @@
 			var mcjdn = date.day() + ummalqura_dat[index - 1] - 1;
 			return mcjdn + 2400000 - 0.5; // Modified Chronological Julian Day Number (MCJDN)
 		},
-
 		/** Create a new date from a Julian date.
 			@memberof UmmAlQuraCalendar
 			@param jd {number} The Julian date to convert.
@@ -172,7 +160,6 @@
 			var day = mcjdn - ummalqura_dat[index - 1] + 1;
 			return this.newDate(year, month, day);
 		},
-
 		/** Determine whether a date is valid for this calendar.
 			@memberof UmmAlQuraCalendar
 			@param year {number} The year to examine.
@@ -187,7 +174,6 @@
 			}
 			return valid;
 		},
-
 		/** Check that a candidate date is from the same calendar and is valid.
 			@memberof UmmAlQuraCalendar
 			@private
@@ -204,10 +190,8 @@
 			return date;
 		}
 	});
-
 	// UmmAlQura calendar implementation
 	$.calendars.calendars.ummalqura = UmmAlQuraCalendar;
-
 	var ummalqura_dat = [
 		20,    50,    79,    109,   138,   168,   197,   227,   256,   286,   315,   345,   374,   404,   433,   463,   492,   522,   551,   581, 
 		611,   641,   670,   700,   729,   759,   788,   818,   847,   877,   906,   936,   965,   995,   1024,  1054,  1083,  1113,  1142,  1172,
@@ -347,5 +331,4 @@
 		78808, 78838, 78867, 78897, 78926, 78956, 78985, 79015, 79044, 79074, 79104, 79133, 79163, 79192, 79222, 79251, 79281, 79310, 79340, 79369,
 		79399, 79428, 79458, 79487, 79517, 79546, 79576, 79606, 79635, 79665, 79695, 79724, 79753, 79783, 79812, 79841, 79871, 79900, 79930, 79960,
 		79990];
-
 })(jQuery);

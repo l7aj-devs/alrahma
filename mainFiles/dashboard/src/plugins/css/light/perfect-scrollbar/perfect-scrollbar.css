@@ -18,7 +18,6 @@
   touch-action: auto;
   -ms-touch-action: auto;
 }
-
 /*
  * Scrollbar rail styles
  */
@@ -33,7 +32,6 @@
   /* please don't change 'position' */
   position: absolute;
 }
-
 .ps__rail-y {
   display: none;
   opacity: 0;
@@ -45,29 +43,23 @@
   /* please don't change 'position' */
   position: absolute;
 }
-
 .ps--active-x > .ps__rail-x, .ps--active-y > .ps__rail-y {
   display: block;
   background-color: transparent;
 }
-
 .ps:hover > .ps__rail-x, .ps:hover > .ps__rail-y {
   opacity: 0.6;
 }
-
 .ps--focus > .ps__rail-x, .ps--focus > .ps__rail-y {
   opacity: 0.6;
 }
-
 .ps--scrolling-x > .ps__rail-x, .ps--scrolling-y > .ps__rail-y {
   opacity: 0.6;
 }
-
 .ps .ps__rail-x:hover, .ps .ps__rail-y:hover, .ps .ps__rail-x:focus, .ps .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking {
   background-color: transparent;
   opacity: 0.9;
 }
-
 /*
  * Scrollbar thumb styles
  */
@@ -82,7 +74,6 @@
   /* please don't change 'position' */
   position: absolute;
 }
-
 .ps__thumb-y {
   background-color: #888ea8;
   border-radius: 6px;
@@ -94,17 +85,14 @@
   /* please don't change 'position' */
   position: absolute;
 }
-
 .ps__rail-x:hover > .ps__thumb-x, .ps__rail-x:focus > .ps__thumb-x, .ps__rail-x.ps--clicking .ps__thumb-x {
   background-color: #bfc9d4;
   height: 6px;
 }
-
 .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
   background-color: #bfc9d4;
   width: 6px;
 }
-
 /* MS supports */
 @supports (-ms-overflow-style: none) {
   .ps {

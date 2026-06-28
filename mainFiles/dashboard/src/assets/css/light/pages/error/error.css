@@ -12,11 +12,9 @@
   width: 62px;
   height: 62px;
 }
-
 body:before {
   display: none;
 }
-
 body.error {
   color: #888ea8;
   height: 100%;
@@ -32,7 +30,6 @@ body.error > .error-content {
   text-align: center;
   padding: 30px;
 }
-
 .error .mini-text {
   font-size: 33px;
   font-weight: 700;

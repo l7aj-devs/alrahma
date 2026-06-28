@@ -5,15 +5,12 @@
       .cls-1 {
         fill: #c99e65;
       }
-
       .cls-2 {
         clip-path: url(#clippath-1);
       }
-
       .cls-3 {
         clip-path: url(#clippath-2);
       }
-
       .cls-4 {
         clip-path: url(#clippath);
       }

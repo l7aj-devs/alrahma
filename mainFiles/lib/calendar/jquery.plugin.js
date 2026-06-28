@@ -5,23 +5,18 @@
 // Inspired by base2 and Prototype
 (function(){
 	var initializing = false;
-
 	// The base JQClass implementation (does nothing)
 	window.JQClass = function(){};
-
 	// Collection of derived classes
 	JQClass.classes = {};
- 
 	// Create a new JQClass that inherits from this class
 	JQClass.extend = function extender(prop) {
 		var base = this.prototype;
-
 		// Instantiate a base class (but only create the instance,
 		// don't run the init constructor)
 		initializing = true;
 		var prototype = new this();
 		initializing = false;
-
 		// Copy the properties over onto the new prototype
 		for (var name in prop) {
 			// Check if we're overwriting an existing function
@@ -30,25 +25,20 @@
 				(function(name, fn){
 					return function() {
 						var __super = this._super;
-
 						// Add a new ._super() method that is the same method
 						// but on the super-class
 						this._super = function(args) {
 							return base[name].apply(this, args || []);
 						};
-
 						var ret = fn.apply(this, arguments);				
-
 						// The method only need to be bound temporarily, so we
 						// remove it when we're done executing
 						this._super = __super;
-
 						return ret;
 					};
 				})(name, prop[name]) :
 				prop[name];
 		}
-
 		// The dummy class constructor
 		function JQClass() {
 			// All construction is actually done in the init method
@@ -56,40 +46,31 @@
 				this._init.apply(this, arguments);
 			}
 		}
-
 		// Populate our constructed prototype object
 		JQClass.prototype = prototype;
-
 		// Enforce the constructor to be what we expect
 		JQClass.prototype.constructor = JQClass;
-
 		// And make this class extendable
 		JQClass.extend = extender;
-
 		return JQClass;
 	};
 })();
-
 (function($) { // Ensure $, encapsulate
-
 	/** Abstract base class for collection plugins v1.0.1.
 		Written by Keith Wood (kbwood{at}iinet.com.au) December 2013.
 		Licensed under the MIT (http://keith-wood.name/licence.html) license.
 		@module $.JQPlugin
 		@abstract */
 	JQClass.classes.JQPlugin = JQClass.extend({
-
 		/** Name to identify this plugin.
 			@example name: 'tabs' */
 		name: 'plugin',
-
 		/** Default options for instances of this plugin (default: {}).
 			@example defaultOptions: {
  	selectedClass: 'selected',
  	triggers: 'click'
  } */
 		defaultOptions: {},
-		
 		/** Options dependent on the locale.
 			Indexed by language and (optional) country code, with '' denoting the default language (English/US).
 			@example regionalOptions: {
@@ -98,18 +79,15 @@
 	}
  } */
 		regionalOptions: {},
-		
 		/** Names of getter methods - those that can't be chained (default: []).
 			@example _getters: ['activeTab'] */
 		_getters: [],
-
 		/** Retrieve a marker class for affected elements.
 			@private
 			@return {string} The marker class. */
 		_getMarker: function() {
 			return 'is-' + this.name;
 		},
-		
 		/** Initialise the plugin.
 			Create the jQuery bridge - plugin name <code>xyz</code>
 			produces <code>$.xyz</code> and <code>$.fn.xyz</code>. */
@@ -139,14 +117,12 @@
 				});
 			};
 		},
-
 		/** Set default values for all subsequent instances.
 			@param options {object} The new default options.
 			@example $.plugin.setDefauls({name: value}) */
 		setDefaults: function(options) {
 			$.extend(this.defaultOptions, options || {});
 		},
-		
 		/** Determine whether a method is a getter and doesn't permit chaining.
 			@private
 			@param name {string} The method name.
@@ -159,7 +135,6 @@
 			}
 			return $.inArray(name, this._getters) > -1;
 		},
-		
 		/** Initialise an element. Called internally only.
 			Adds an instance object as data named for the plugin.
 			@param elem {Element} The element to enhance.
@@ -177,7 +152,6 @@
 			this._postAttach(elem, inst);
 			this.option(elem, options);
 		},
-
 		/** Retrieve additional instance settings.
 			Override this in a sub-class to provide extra settings.
 			@param elem {jQuery} The current jQuery element.
@@ -189,7 +163,6 @@
 		_instSettings: function(elem, options) {
 			return {};
 		},
-
 		/** Plugin specific post initialisation.
 			Override this in a sub-class to perform extra activities.
 			@param elem {jQuery} The current jQuery element.
@@ -201,7 +174,6 @@
  } */
 		_postAttach: function(elem, inst) {
 		},
-
 		/** Retrieve metadata configuration from the element.
 			Metadata is specified as an attribute:
 			<code>data-&lt;plugin name>="&lt;setting name>: '&lt;value>', ..."</code>.
@@ -230,14 +202,12 @@
 				return {};
 			}
 		},
-
 		/** Retrieve the instance data for element.
 			@param elem {Element} The source element.
 			@return {object} The instance data or {}. */
 		_getInst: function(elem) {
 			return $(elem).data(this.name) || {};
 		},
-		
 		/** Retrieve or reconfigure the settings for a plugin.
 			@param elem {Element} The source element.
 			@param name {object|string} The collection of new option values or the name of a single option.
@@ -265,7 +235,6 @@
 			this._optionsChanged(elem, inst, options);
 			$.extend(inst.options, options);
 		},
-		
 		/** Plugin specific options processing.
 			Old value available in <code>inst.options[name]</code>, new value in <code>options[name]</code>.
 			Override this in a sub-class to perform extra activities.
@@ -279,7 +248,6 @@
  } */
 		_optionsChanged: function(elem, inst, options) {
 		},
-		
 		/** Remove all trace of the plugin.
 			Override <code>_preDestroy</code> for plugin-specific processing.
 			@param elem {Element} The source element.
@@ -292,7 +260,6 @@
 			this._preDestroy(elem, this._getInst(elem));
 			elem.removeData(this.name).removeClass(this._getMarker());
 		},
-
 		/** Plugin specific pre destruction.
 			Override this in a sub-class to perform extra activities and undo everything that was
 			done in the <code>_postAttach</code> or <code>_optionsChanged</code> functions.
@@ -304,7 +271,6 @@
 		_preDestroy: function(elem, inst) {
 		}
 	});
-	
 	/** Convert names from hyphenated to camel-case.
 		@private
 		@param value {string} The original hyphenated name.
@@ -314,11 +280,9 @@
 			return group.toUpperCase();
 		});
 	}
-	
 	/** Expose the plugin base.
 		@namespace "$.JQPlugin" */
 	$.JQPlugin = {
-	
 		/** Create a new collection plugin.
 			@memberof "$.JQPlugin"
 			@param [superClass='JQPlugin'] {string} The name of the parent class to inherit from.
@@ -340,5 +304,4 @@
 			new JQClass.classes[className]();
 		}
 	};
-
 })(jQuery);

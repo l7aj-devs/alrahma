@@ -7313,7 +7313,6 @@ header.opaque .navbar-light .navbar-nav .nav-link:focus:before,
 header.opaque .navbar-light .navbar-nav .nav-link:hover:before {
     inset-block-end: -2px;
 }
-
 header .navbar-brand img {
     transition: 0.3s;
 }
@@ -7609,7 +7608,6 @@ header .navbar-nav .dropdown-menu {
     .breadcrumb-item
     + .breadcrumb-item:before {
     color: #fff !important;
-
 }
 .breadcrumb.breadcrumb-onslider.text-primary-green
     .breadcrumb-item
@@ -7725,7 +7723,6 @@ btn:active {
     background: linear-gradient(270deg,  #CA9E66 20%, #2865DD 105%) !important;
     color: #fff !important;
     transition: .6s linear all;
-
 }
 .btn-light-grey {
     background: #f7f7f7;
@@ -8135,7 +8132,6 @@ main {
 [dir="rtl"] .form-check-reverse .form-check-input {
     float: left;
 }
-
 .form-switch {
     padding-inline-start: 2.5em;
 }
@@ -8281,7 +8277,6 @@ main {
     border-start-end-radius: 0;
     border-start-start-radius: 50rem;
 }
-
 .btn-gradient.btn,
 .btn-gradient.btn:focus,
 .btn-gradient.btn:hover,
@@ -10877,13 +10872,11 @@ img {
 .about-goals-box p {
     font-size: 14px;
 }
-
 .about-features .card {
     box-shadow: 0 2px 15px hsla(0, 0%, 70%, 0.2);
     z-index: 2;
 }
 .about-features .card .feature-title {
-
     color: #2763DA;
     font-size: 16px;
     font-weight: 700;
@@ -11071,7 +11064,6 @@ img {
     color: #fff !important;
     outline: none !important;
     box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.5)
-
 }
 .rangeslider1 .rangeslider-thumb {
     background: #2865dd;
@@ -11465,7 +11457,6 @@ img {
     width: 100%;
     max-height: 30vh; /* Add a max-height to prevent overly tall images */
 }
-
 /* Adjustments for larger screens */
 @media (min-width: 820px) and (max-width: 1366px) {
     .img-subsidy img {
@@ -11474,7 +11465,6 @@ img {
         width: 100%;
     }
 }
-
 /* Adjustments for very large screens */
 @media (min-width: 1367px) {
     .img-subsidy img {
@@ -11483,7 +11473,6 @@ img {
         width: 100%;
     }
 }
-
 .img-subsidy .rangeslider1 {
     margin-block-start: -16px;
 }
@@ -11565,7 +11554,6 @@ img {
     background-size: cover;
     height: 160px;
     /*background-position-y: -10vh;*/
-
 }
 .banner-major-doners {
     background-image: url(../../assets/imgs/small_banners/iemar_mob.jpg);
@@ -12455,7 +12443,6 @@ div[class*="card-donors-"] img {
 }
 .hover-shadow,.hover-shadow-force{
     transition: all 0.6s;
-
 }
 .hover-shadow:hover {
     box-shadow:  0px 2px 10px 2px rgba(0, 0, 0, 0.27) !important;
@@ -12726,7 +12713,6 @@ div[class*="card-donors-"] img {
 .banner-ghiras-ambassadors>* {
     position: relative;
 }
-
 .banner-ghiras-ambassadors:before {
     background: #2865DD;
     background: linear-gradient(318deg, #4663d2 0%, #2865DD 100%);
@@ -12747,13 +12733,10 @@ div[class*="card-donors-"] img {
     position: absolute;
     content: "";
     opacity: 0.2;
-
 }
 .background-sliders>*{
     position: relative;
-
 }
-
 .banner-major-doners:before {
     background: #27599E;
     background: linear-gradient(318deg, #27599E 0%, #2865DD 100%);
@@ -12774,7 +12757,6 @@ div[class*="card-donors-"] img {
     }
     .banner-partners {
         background-image: url(../../assets/imgs/small_banners/aytam_mob.jpg) !important;
-
     }
     .banner-major-doners {
         background-image: url(../../assets/imgs/small_banners/iemar.jpg);
@@ -12824,7 +12806,6 @@ div[class*="card-donors-"] img {
         color: #1878CE;
         opacity: 1;
     }
-
     /*.contact-main {*/
     /*    background-image: url(../../assets/imgs/shaps/blue_chart.svg);*/
     /*    background-position: 5px 0, 0 0, 0 -289px;*/
@@ -12893,7 +12874,6 @@ div[class*="card-donors-"] img {
     .about-features .card .feature-title {
         background-position: 88px -5px;
     }
-
     .about-vision-icon.arrow-lg-1:after {
         background-image: url(../images/left-arrow-up.svg);
         inset-block-start: 40px;
@@ -13677,7 +13657,6 @@ div[class*="card-donors-"] img {
 .apple-pay-button-white-with-line {
     -apple-pay-button-style: white-outline;
 }
-
 .shadow-box{
     transition: box-shadow .3s;
 }

@@ -13,7 +13,6 @@
         data-srOpenNotification: a string that should be announced to screen readers automatically when opening the overlay. This HTML Attribute should be set on the overlay parent.
         data-srCloseNotification: a string that should be announced to screen readers automatically when closing the overlay. This HTML Attribute should be set on the overlay parent.
 */
-
 AccessibleOverlay = function (
   overlay,
   openBtn,
@@ -32,7 +31,6 @@ AccessibleOverlay = function (
   this.closeBtn = closeBtn
   this.focusOnOpen = focusOnOpen
   this.overlayNodes, this.nonOverlayNodes
-
   this.trapFocusManager = function () {
     if (this.overlayState) {
       $(this.overlay)
@@ -42,15 +40,12 @@ AccessibleOverlay = function (
             let tabbable = $(this.overlay)
               .find('select, input, textarea, button, a, [tabindex="0"]')
               .filter(':visible')
-
             if (tabbable.length === 0) {
               e.preventDefault()
               return
             }
-
             let firstTabbable = tabbable.first()
             let lastTabbable = tabbable.last()
-
             // Redirect last tab to first input, and first Shift+Tab to last input
             if (e.shiftKey && $(document.activeElement).is(firstTabbable)) {
               e.preventDefault()
@@ -76,13 +71,11 @@ AccessibleOverlay = function (
     ).toArray()
     for (let i = 0; i < this.nonOverlayNodes.length; i++) {
       let node = this.nonOverlayNodes[i]
-
       if (!this.overlayNodes.includes(node)) {
         // save the previous tabindex state so we can restore it on close
         node._prevTabindex = node.getAttribute('tabindex')
         node._prevAriaHidden = node.getAttribute('aria-hidden')
         $(node).attr('tabindex', '-1').attr('aria-hidden', 'true')
-
         // tabindex=-1 does not prevent the mouse from focusing the node (which
         // would show a focus outline around the element). prevent this by disabling
         // outline styles while the modal is open
@@ -117,7 +110,6 @@ AccessibleOverlay = function (
       }, 100)
     }
   }
-
   this.closeOverlay = function () {
     for (let i = 0; i < this.nonOverlayNodes.length; i++) {
       let node = this.nonOverlayNodes[i]
@@ -149,33 +141,28 @@ AccessibleOverlay = function (
     }
   }
 }
-
 /*
     handleKeyboardQdEdit
     Used to simulate a click on edit button in QD Payment form by intersepting return and space keys.
     All other logic shall be intact and executed upon clicking the element
 */
-
 function handleKeyboardQDEdit(element, event) {
   if (event.keyCode === 32 || event.keyCode === 13) {
     event.preventDefault()
     $(element).click()
   }
 }
-
 /*
     handleSearchSubmit
     Used to simulate a click on search button in search boxes of Tyassarat and Forijat pages by intersepting return key.
     All other logic shall be intact and executed upon clicking the element
 */
-
 function handleSearchSubmit(element, event) {
   if (event.keyCode === 13) {
     event.preventDefault()
     $(element).click()
   }
 }
-
 function handleSwiperPauseButton(e, mySwiper) {
   if (mySwiper[0].autoplay.running && mySwiper[1].autoplay.running) {
     mySwiper[0].autoplay.stop()
@@ -187,14 +174,12 @@ function handleSwiperPauseButton(e, mySwiper) {
     $(e.target).attr('aria-pressed', 'false')
   }
 }
-
 function toggleFixedMenu() {
   $('.fixed-side-menu').toggleClass('has-focus')
   $('.fixed-side-menu').hasClass('has-focus')
     ? window.qdOverlay.openOverlay()
     : window.qdOverlay.closeOverlay()
 }
-
 function Clipboard_CopyTo(value) {
   var tempInput = document.createElement('input')
   tempInput.value = value
@@ -203,7 +188,6 @@ function Clipboard_CopyTo(value) {
   document.execCommand('copy')
   document.body.removeChild(tempInput)
 }
-
 function createMockedLinks() {
   $('a.card-details-link').each(function (index, item) {
     var parent = $(item).parent()
@@ -227,18 +211,14 @@ function createMockedLinks() {
     parent.prepend(mockDiv)
   })
 }
-
 $(createMockedLinks())
-
 function doNavigate(url) {
   window.location.href = url
 }
-
 document.addEventListener('DOMContentLoaded', (event) => {
   $(document).on('wheel', 'input[type=number]', function (e) {
     $(this).blur()
   })
-
   //Bootstrap fix for radio buttons keyboard changing bug
   $(document).on(
     'click',
@@ -249,37 +229,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
       event.preventDefault = () => true
     }
   )
-
   $('#account-modal').modal({
     showClose: false,
   })
-
   $('.hideCloseButton').modal({
     showClose: false,
   })
-
   try {
     window.drawer = tinyDrawer()
   } catch (e) {}
-
   // Scroll Header Listener
   let scrollpos = window.scrollY
   const header = document.querySelector('header')
   const header_height = header.offsetHeight
-
   const add_class_on_scroll = () => header.classList.add('opaque')
   const remove_class_on_scroll = () => header.classList.remove('opaque')
-
   window.addEventListener('scroll', function () {
     scrollpos = window.scrollY
-
     if (scrollpos >= 100) {
       add_class_on_scroll()
     } else {
       remove_class_on_scroll()
     }
   })
-
   $(document).ready(function () {
     $('.select2-selection__arrow').text('')
     $('.select2-selection__arrow')
@@ -295,16 +267,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     })
     $('.share-help').tipTop({ offsetVertical: 20, offsetHorizontal: 90 })
     $('.general-help').tipTop({ offsetVertical: 10, offsetHorizontal: 10 })
-
     if ($(document).scrollTop() > 100) {
       $('header').addClass('opaque')
     }
   })
-
   $(function () {
     // init Bootstrap4 tooltip
     $('[data-toggle="tooltip"]').tooltip()
-
     // $('.all-projects a').on('click touchend', function (e) {
     //     if (e.cancelable) { // added by Moamen
     //         var link = $(this).attr('href');
@@ -312,7 +281,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //     }
     //     return false;
     // });
-
     window.qdOverlay = new AccessibleOverlay(
       (overlay = 'div.fixed-side-menu'),
       (openBtn = '#qd-open'),
@@ -330,13 +298,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
       }
     })
   })
-
   //paymentFormValidationQuickDonation('#fixed-side-menu-tab1 ')
   //paymentFormValidationQuickDonation("#fixed-side-menu-tab2 ");
   //paymentFormValidationQuickDonation("#fixed-side-menu-tab3 ");
   //paymentFormValidationQuickDonation("#fixed-side-menu-tab4 ");
 })
-
 $.fn.inputFilter = function (inputFilter) {
   return this.on(
     'input keydown keyup mousedown mouseup select contextmenu drop',
@@ -354,13 +320,11 @@ $.fn.inputFilter = function (inputFilter) {
     }
   )
 }
-
 $(document).ready(function () {
   $('#cardNumber, #cvv, #expMonth, #expYear').inputFilter(function (value) {
     return /^\d*$/.test(value) // Allow digits only, using a RegExp
   })
 })
-
 function paymentFormValidation(parentSelector) {
   var ccErrors = []
   ccErrors[0] = 'الرجاء إدخال الاسم بالكامل'
@@ -369,7 +333,6 @@ function paymentFormValidation(parentSelector) {
   ccErrors[3] = 'الرجاء إدخال تاريخ صحيح'
   ccErrors[4] = 'الرجاء إدخال رمز أمان صحيح'
   ccErrors[5] = '*'
-
   var checkVisaMaster = function (value, isMada) {
     var src = $(parentSelector + ' #card-icon-image').attr('src')
     var lengthValidToCheck = value && (value.length == 6 || value.length == 16)
@@ -377,7 +340,6 @@ function paymentFormValidation(parentSelector) {
       $(parentSelector + ' #cardNumber')
         .addClass('card-type-valid')
         .removeClass('card-type-invalid')
-
       if (src != '/assets/images/payment/mada.png') {
         $(parentSelector + ' #card-icon-image')
           .attr('src', '/assets/images/payment/mada.png')
@@ -387,7 +349,6 @@ function paymentFormValidation(parentSelector) {
       $(parentSelector + ' #cardNumber')
         .addClass('card-type-valid')
         .removeClass('card-type-invalid')
-
       if (src != '/assets/images/payment/visa.png') {
         $(parentSelector + ' #card-icon-image')
           .attr('src', '/assets/images/payment/visa.png')
@@ -397,7 +358,6 @@ function paymentFormValidation(parentSelector) {
       $(parentSelector + ' #cardNumber')
         .addClass('card-type-valid')
         .removeClass('card-type-invalid')
-
       if (src != '/assets/images/payment/mastercard.png') {
         $(parentSelector + ' #card-icon-image')
           .attr('src', '/assets/images/payment/mastercard.png')
@@ -407,7 +367,6 @@ function paymentFormValidation(parentSelector) {
       $(parentSelector + ' #cardNumber')
         .removeClass('card-type-valid')
         .addClass('card-type-invalid')
-
       if (src != '/assets/images/payment/visa dimmed.svg') {
         $(parentSelector + ' #card-icon-image')
           .attr('src', '/assets/images/payment/visa dimmed.svg')
@@ -415,12 +374,10 @@ function paymentFormValidation(parentSelector) {
       }
     }
   }
-
   $(document).ready(function () {
     let val = $('#cardNumber').val()
     if (val) checkVisaMaster(val)
   })
-
   $('#cardNumber').on('input', function (e) {
     let val = $('#cardNumber').val()
     checkVisaMaster(val)
@@ -447,7 +404,6 @@ function paymentFormValidation(parentSelector) {
       checkVisaMaster('mock')
     }
   })
-
   $(parentSelector + ' form').validate({
     rules: {
       cartItemAmount: {
@@ -541,20 +497,15 @@ function paymentFormValidation(parentSelector) {
     },
     errorElement: 'span',
   })
-
   $.validator.addMethod('monthYear', function (value, element) {
     var minMonth = new Date().getMonth() + 1
     var minYear = new Date().getFullYear()
-
     var monthElem = $(parentSelector + ' #expMonth')
     var yearElem = $(parentSelector + ' #expYear')
-
     var formMonth = monthElem.val()
     var formYear = yearElem.val()
-
     var month = parseInt(formMonth)
     var year = 2000 + parseInt(formYear)
-
     if (year > minYear && month > 0 && month < 13 && year > 0) {
       //monthElem.removeClass("error").addClass("valid");
       //yearElem.removeClass("error").addClass("valid");
@@ -590,21 +541,17 @@ function paymentFormValidation(parentSelector) {
       return true
     }
   })
-
   $.validator.addMethod('pattern', function (value, element, regexp) {
     var re = new RegExp(regexp)
     return re.test(value)
   })
-
   $.validator.addMethod('isCardValid', function (value, element) {
     return $(element).hasClass('card-type-valid')
   })
-
   $(parentSelector + ' .card-dates input').focus(function () {
     this.value = ''
   })
 }
-
 function paymentFormValidationQuickDonation(parentSelector) {
   var ccErrors = []
   ccErrors[0] = 'الرجاء إدخال الاسم باللغة الإنجليزية'
@@ -613,7 +560,6 @@ function paymentFormValidationQuickDonation(parentSelector) {
   ccErrors[3] = 'يوجد خطأ بالتاريخ'
   ccErrors[4] = 'الرجاء إدخال CVV'
   ccErrors[5] = '*'
-
   var checkVisaMaster = function (value, isMada) {
     if (isMada && isMada == true) {
       $(parentSelector + '#cardNumber')
@@ -670,7 +616,6 @@ function paymentFormValidationQuickDonation(parentSelector) {
       checkVisaMaster('mock')
     }
   })
-
   $(parentSelector + 'form').validate({
     rules: {
       editAmount: {
@@ -758,28 +703,22 @@ function paymentFormValidationQuickDonation(parentSelector) {
       ) {
       } else this.element(element)
     },
-
     errorElement: 'span',
     submitHandler: function (form) {
       form.submit()
     },
   })
-
   $.validator.addMethod(
     'monthYearExpiry',
     function (value, element, parentSelector) {
       var minMonth = new Date().getMonth() + 1
       var minYear = new Date().getFullYear()
-
       var monthElem = $(parentSelector + '#expMonth')
       var yearElem = $(parentSelector + '#expYear')
-
       var formMonth = monthElem.val()
       var formYear = yearElem.val()
-
       var month = parseInt(formMonth)
       var year = 2000 + parseInt(formYear)
-
       if (year > minYear && month > 0 && month < 13 && year > 0 && year < 100) {
         return true
       } else if (
@@ -812,21 +751,17 @@ function paymentFormValidationQuickDonation(parentSelector) {
       }
     }
   )
-
   $.validator.addMethod('pattern', function (value, element, regexp) {
     var re = new RegExp(regexp)
     return re.test(value)
   })
-
   $.validator.addMethod('isCardValid', function (value, element) {
     return $(element).hasClass('card-type-valid')
   })
-
   $(parentSelector + ' .card-dates input').focus(function () {
     this.value = ''
   })
 }
-
 function paymentFormValidationPeriodicDonation(parentSelector) {
   var ccErrors = []
   ccErrors[0] = 'الرجاء إدخال الاسم بالكامل'
@@ -836,7 +771,6 @@ function paymentFormValidationPeriodicDonation(parentSelector) {
   ccErrors[4] = 'الرجاء إدخال رمز أمان صحيح'
   ccErrors[5] = '*'
   ccErrors[6] = 'الرجاء اختيار مجال التبرع'
-
   var checkVisaMaster = function (value, isMada) {
     if (isMada && isMada == true) {
       $(parentSelector + ' #cardNumber')
@@ -905,7 +839,6 @@ function paymentFormValidationPeriodicDonation(parentSelector) {
     var value = e.target.value
     isMada(value)
   })
-
   $(parentSelector + ' form').validate({
     rules: {
       //"cartItemAmount": {
@@ -994,20 +927,15 @@ function paymentFormValidationPeriodicDonation(parentSelector) {
     },
     errorElement: 'span',
   })
-
   $.validator.addMethod('monthYear', function (value, element) {
     var minMonth = new Date().getMonth() + 1
     var minYear = new Date().getFullYear()
-
     var monthElem = $(parentSelector + ' #expMonth')
     var yearElem = $(parentSelector + ' #expYear')
-
     var formMonth = monthElem.val()
     var formYear = yearElem.val()
-
     var month = parseInt(formMonth)
     var year = 2000 + parseInt(formYear)
-
     if (year > minYear && month > 0 && month < 13 && year > 0) {
       //monthElem.removeClass("error").addClass("valid");
       //yearElem.removeClass("error").addClass("valid");
@@ -1043,21 +971,17 @@ function paymentFormValidationPeriodicDonation(parentSelector) {
       return true
     }
   })
-
   $.validator.addMethod('pattern', function (value, element, regexp) {
     var re = new RegExp(regexp)
     return re.test(value)
   })
-
   $.validator.addMethod('isCardValid', function (value, element) {
     return $(element).hasClass('card-type-valid')
   })
-
   $(parentSelector + ' .card-dates input').focus(function () {
     this.value = ''
   })
 }
-
 function checkoutAmount(rootSelector) {
 //   window.callApplePayMerchant()
   var inputValue = +$(rootSelector + '.amount').val()
@@ -1124,7 +1048,6 @@ function checkoutAmount(rootSelector) {
     }
   }
 }
-
 function menuItemListener(dropdownId = '') {
   let elem = document.getElementsByClassName('opened')[0]
   if (elem && (elem.id !== dropdownId || !dropdownId.startsWith('menu-'))) {
@@ -1135,15 +1058,12 @@ function menuItemListener(dropdownId = '') {
   } else if (dropdownId.startsWith('menu-'))
     document.getElementById(dropdownId).classList.toggle('opened')
 }
-
 function openDrawer() {
   window.drawer.open()
 }
-
 function closeDrawer() {
   window.drawer.close()
 }
-
 var checkMax = function (input) {
   var inputVal = Number(input.val())
   var max = null
@@ -1158,7 +1078,6 @@ var checkMax = function (input) {
     return true
   }
 }
-
 var checkAmount = function (input) {
   var inputVal = Number(input.val())
   if (inputVal <= 0) {
@@ -1169,7 +1088,6 @@ var checkAmount = function (input) {
     return true
   }
 }
-
 function parseHindiNumber(e) {
   var str = e.target.value
   str = str.replace(/[٠١٢٣٤٥٦٧٨٩]/g, function (d) {
@@ -1178,11 +1096,9 @@ function parseHindiNumber(e) {
   $(e.target).val(str)
   $(e.target).trigger('change')
 }
-
 function convetNumberToCurrency(e) {
   var currentControl = $(e.target)
   var str = currentControl.val()
-
   str = str.replace(/[٠١٢٣٤٥٦٧٨٩]/g, function (d) {
     return d.charCodeAt(0) - 1632 // Convert Hindi numbers to arabic
   })
@@ -1194,7 +1110,6 @@ function convetNumberToCurrency(e) {
     var currentValue
     var allnumber = number.replace(getCommaSeparator(), '.')
     currentControl.val(allnumber !== '.' ? formatNumber(allnumber) : '')
-
     // if deleting the comma, delete it correctly
     if (
       currentValue == currentControl.val() &&
@@ -1213,7 +1128,6 @@ function convetNumberToCurrency(e) {
       )
       cursorPosition--
     }
-
     // if entering comma for separation, leave it in there (as well support .000)
     var commaSeparator = getCommaSeparator()
     if (
@@ -1227,7 +1141,6 @@ function convetNumberToCurrency(e) {
           valueBefore.substring(valueBefore.indexOf(commaSeparator))
       )
     }
-
     // move cursor correctly if thousand separator got added or removed
     var specialCharsAfter = getSpecialCharsOnSides(currentControl.val())
     if (specialCharsBefore[0] < specialCharsAfter[0]) {
@@ -1240,7 +1153,6 @@ function convetNumberToCurrency(e) {
   } else currentControl.val(str)
   currentControl.trigger('change')
 }
-
 function applyOnlyNumberCustom() {
   $('.only-number-with-paste').on('input', parseHindiNumber)
   $('.only-number-with-paste').on('change', function (e) {
@@ -1264,12 +1176,10 @@ function applyOnlyNumberCustom() {
     return false
   })
 }
-
 function arabicLettersOnly(e) {
   // const regTest = /^[ا-يأؤءإآلالإ]+[ا-يأءئؤلإآلإلاىًٌٍَُِّْ\s]*$/g;
   const engilshAndSpecialReg = /[~`!@#$%^&*()_+=[\]\{}|;':",.\/<>?a-zA-Z0-9-]/g
   e.target.value = e.target.value.trimStart().replace(engilshAndSpecialReg, '')
-
   // if (!regTest.test(e.target.value)) {
   //     console.log("en");
   //     // e.target.value = "";
@@ -1279,7 +1189,6 @@ function arabicLettersOnly(e) {
   //     console.log("ar");
   // }
 }
-
 function saudiMobileNumber(e) {
   const regTest = /^(05)[0-9]{8}$/g
   if (!regTest.test(e.target.value)) {
@@ -1287,13 +1196,10 @@ function saudiMobileNumber(e) {
     return false
   }
 }
-
 $('.arabic-letters-only').on('input', arabicLettersOnly)
 $('.saudi-mobile-number').on('blur', saudiMobileNumber)
-
 function init_fields_validations() {
   applyOnlyNumberCustom()
-
   $('.only-number')
     .attr('inputmode', 'numeric')
     .attr('pattern', '[0-9]*')
@@ -1305,14 +1211,12 @@ function init_fields_validations() {
   $('.only-number').on('input', parseHindiNumber)
   $('.only-number[maxLength]').keypress(function (e) {
     if (!e.target) return false
-
     if (e.target.selectionEnd - e.target.selectionStart > 0) return true
     var value = e.target.value
     var length = e.target.maxLength
     if (value.length < length) return true
     return false
   })
-
   $('.english-only').on('keypress', function (event) {
     var englishAlphabetAndWhiteSpace = /^[ a-zA-Z]+( [ a-zA-Z]+)*$/g
     var key = String.fromCharCode(event.which)
@@ -1327,7 +1231,6 @@ function init_fields_validations() {
     }
     return false
   })
-
   $('.only-currency').on('keypress', function (e) {
     let keyCode = e.keyCode ? e.keyCode : e.which
     if (
@@ -1338,10 +1241,8 @@ function init_fields_validations() {
       e.preventDefault()
     }
   })
-
   $('.only-currency').on('input', convetNumberToCurrency)
 }
-
 //set flag to manage change donation type
 let donationType
 // Fixed side menu listener
@@ -1386,17 +1287,13 @@ function handleFixedSideNavTabClick(
     getCard(initiativeTypeNumber)
   }
   var thisElement = $('.fixed-side-menu .nav-tabs li.active')
-
   console.log(thisElement, event.target)
-
   document
     .querySelector('.fixed-side-menu .nav-tabs li.active')
     .classList.remove('active')
   element.classList.add('active')
-
   //For accessabilty
   //window.qdAccess.switchChildren(thisElement, $(element));
-
   //document.getElementById(menuId).classList.add("active", "in");
   if (donationType === 'publicOpportunity') {
     $('form[name="paymentDetailsFormQuickMenu"]').attr('aria-label', 'تبرع عام')
@@ -1458,7 +1355,6 @@ function handleFixedSideNavTabClick(
   }
   event.stopPropagation()
 }
-
 function buildModal(theID, theTITLE, theREL, button) {
   var noButtonText = button === '' ? 'نعم' : 'لا'
   var result =
@@ -1484,11 +1380,9 @@ function buildModal(theID, theTITLE, theREL, button) {
   result += '</div></div></div></div>'
   return result
 }
-
 function closeModal() {
   $.modal.close()
 }
-
 function ConfirmDialog(
   theTITLE,
   theMessage,
@@ -1501,14 +1395,12 @@ function ConfirmDialog(
       random_id +
       '" class="btn btn-dark-green okButton">نعم</button>'
   )
-
   var theTARGET = buildModal(
     random_id,
     theTITLE,
     theMessage,
     okButton[0].outerHTML
   )
-
   $(theTARGET).modal({ backdrop: 'static', show: true, modalClass: '' })
   $(document).on('click', '#okButton_' + random_id, function () {
     closeModal()
@@ -1519,40 +1411,30 @@ function ConfirmDialog(
     if (typeof noCallBackFunction === 'function') noCallBackFunction()
   })
 }
-
 /* ---------------Currency Input Format ----------------- */
-
 function FixedDecimal(value) {
   return Number.parseFloat(value).toFixed(2)
 }
-
 function getCaretPosition(elem) {
   // Initialize
   var ipos = 0
-
   // IE Support
   if (document.selection) {
     // Set focus on the element
     elem.focus()
-
     // To get cursor position, get empty selection range
     var oSel = document.selection.createRange()
-
     // Move selection start to 0 position
     oSel.moveStart('character', -elem.value.length)
-
     // The caret position is selection length
     ipos = oSel.text.length
   }
-
   // Firefox support
   else if (elem.selectionStart || elem.selectionStart == '0')
     ipos = elem.selectionStart
-
   // Return results
   return ipos
 }
-
 function setCaretPosition(elem, pos) {
   if (elem !== null) {
     if (elem.createTextRange) {
@@ -1567,7 +1449,6 @@ function setCaretPosition(elem, pos) {
     }
   }
 }
-
 function getSpecialCharsOnSides(x, cursorPosition) {
   var specialCharsLeft = x
     .substring(0, cursorPosition)
@@ -1577,29 +1458,23 @@ function getSpecialCharsOnSides(x, cursorPosition) {
     .replace(/[0-9]/g, '').length
   return [specialCharsLeft, specialCharsRight]
 }
-
 function formatNumber(x) {
   return getNumberFormat().format(x)
 }
-
 function removeThousandSeparators(x) {
   return x
     .toString()
     .replace(new RegExp(escapeRegExp(getThousandSeparator()), 'g'), '')
 }
-
 function getThousandSeparator() {
   return getNumberFormat().format('1000').replace(/[0-9]/g, '')[0]
 }
-
 function getCommaSeparator() {
   return getNumberFormat().format('0.01').replace(/[0-9]/g, '')[0]
 }
-
 function getNumberFormat() {
   return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 })
 }
-
 function htmlEnc(s) {
   return s
     .toString()
@@ -1609,11 +1484,9 @@ function htmlEnc(s) {
     .replace(/'/g, '&#39;')
     .replace(/"/g, '&#34;')
 }
-
 function escapeRegExp(str) {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
 }
-
 function removeCurrencyformat(currency) {
   try {
     if (currency == '' || currency == undefined || currency == '.') return 0
@@ -1623,7 +1496,6 @@ function removeCurrencyformat(currency) {
   }
 }
 /* -------------End Currency Input Format ----------------- */
-
 function ShowMessage(
   elementId,
   title,
@@ -1634,24 +1506,17 @@ function ShowMessage(
 ) {
   var alertHtml = ''
   var alertDiv = document.createElement('div')
-
   alertDiv.className = 'border-rounded-15 alert alert-' + type
   alertDiv.setAttribute('role', 'alert')
   alertDiv.setAttribute('style', 'display: none')
-
   if (title !== '' && title !== null && title !== undefined)
     alertHtml = '<strong>' + title + '</strong> : '
-
   alertHtml += message
-
   if (showClose || !autoclose)
     alertHtml +=
       '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-
   alertDiv.innerHTML = alertHtml.trim()
-
   $('#' + elementId).prepend(alertDiv)
-
   if (autoclose)
     $(alertDiv)
       .fadeIn()
@@ -1661,7 +1526,6 @@ function ShowMessage(
       })
   else $(alertDiv).fadeIn()
 }
-
 function ShowMessageMaxLength(
   parentId,
   message,
@@ -1677,13 +1541,10 @@ function ShowMessageMaxLength(
     ' border-rounded-15" role="alert" style="display: none">' +
     ' ' +
     message
-
   if (showClose || !autoclose)
     alertHtml +=
       '<button type = "button" class="close" data - dismiss="alert" aria - label="Close"><span aria - hidden="true" >& times;</span></button>'
-
   $('#' + parentId).prepend(alertHtml)
-
   if (autoclose)
     $('#' + parentId + '_alert')
       .fadeIn()
@@ -1694,7 +1555,6 @@ function ShowMessageMaxLength(
 window.addEventListener('load', (event) => {
   $('#srNotificationArea').attr('aria-live', 'polite').html('تم تحميل الصفحة')
 })
-
 jQuery(function () {
   $('.click-select').focus(function () {
     $('.click-select').select()
@@ -1702,12 +1562,10 @@ jQuery(function () {
   var Ihsan = function () {
     this.events()
   }
-
   Ihsan.prototype.events = function () {
     $(document).on('click', '.droopmenu', this.toggleMenu)
     //$(document).on('click', '.droopmenu .droopmenu-indicator', this.toggleMenu);
   }
-
   Ihsan.prototype.toggleMenu = function (event) {
     if (event.target.nodeName === 'A') {
       var href = $(event.target)
@@ -1723,19 +1581,15 @@ jQuery(function () {
       }
     }
   }
-
   $.fn.IHSAN = function () {
     return new Ihsan()
   }
-
   $(document).IHSAN()
 }, jQuery)
-
 const AlertType = {
   Sucess: 'success',
   Faild: 'danger',
 }
-
 //Prevent any input text required to take space in first
 $('input[data-space="false"]').on('keyup', function (e) {
   let firstChar = $(this).val()[0]

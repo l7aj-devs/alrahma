@@ -5,10 +5,7 @@
 @import url('structure.css');
 /*
     Importing highlight.js CSS code 
-
     Just for demo purpose only
-	
 	@Note:-  monokai-sublime.css stylesheet is for highliting the code;
-
 */
 @import '../../../../src/plugins/src/highlight/styles/monokai-sublime.css';

@@ -3,12 +3,8 @@
    Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 (function($) { // Hide scope, no $ conflict
-
 	var pluginName = 'calendarsPicker';
-
-
 	/** Create the calendars datepicker plugin.
 		<p>Sets an input field to popup a calendar for date entry,
 			or a <code>div</code> or <code>span</code> to show an inline calendar.</p>
@@ -21,11 +17,9 @@
 		@example $(selector).calendarsPicker()
  $(selector).calendarsPicker({minDate: 0, maxDate: '+1m +1w'}) */
 	$.JQPlugin.createPlugin({
-	
 		/** The name of the plugin.
 			@memberof CalendarsPicker */
 		name: pluginName,
-		
 		/** Default template for generating a datepicker.
 			Insert anywhere:
 			<ul>
@@ -87,7 +81,6 @@
 			commandLinkClass: '',
 			disabledClass: 'calendars-disabled'
 		},
-	
 		/** Command actions that may be added to a layout by name.
 			<ul>
 			<li>prev - Show the previous month (based on <code>monthsToStep</code> option) - <em>PageUp</em></li>
@@ -248,7 +241,6 @@
 				action: function(inst) { plugin.changeDay(this, inst.options.calendar.daysInWeek()); }
 			}
 		},
-
 		/** Determine whether a command is enabled.
 			@callback CalendarsPickerCommandEnabled
 			@param inst {object} The current instance settings.
@@ -256,7 +248,6 @@
 			@example enabled: function(inst) {
 	return !!inst.curMinDate();
  } */
-
 		/** Calculate the representative date for a command.
 			@callback CalendarsPickerCommandDate
 			@param inst {object} The current instance settings.
@@ -264,14 +255,12 @@
 			@example date: function(inst) {
 	return inst.curMinDate();
  } */
-
 		/** Perform the action for a command.
 			@callback CalendarsPickerCommandAction
 			@param inst {object} The current instance settings.
 			@example date: function(inst) {
 	$.datepick.setDate(inst.elem, inst.curMinDate());
  } */
-
 		/** Calculate the week of the year for a date.
 			@callback CalendarsPickerCalculateWeek
 			@param date {CDate} The date to evaluate.
@@ -280,7 +269,6 @@
 	var startYear = $.calendars.newDate(date.year(), 1, 1);
 	return Math.floor((date.dayOfYear() - startYear.dayOfYear()) / 7) + 1;
  } */
-
 		/** Provide information about an individual date shown in the calendar.
 			@callback CalendarsPickerOnDate
 			@param date {CDate} The date to evaluate.
@@ -293,7 +281,6 @@
 	return {selectable: date.day() > 0 && date.day() &lt; 5,
 		dateClass: date.day() === 4 ? 'last-day' : ''};
  } */
-
 		/** Update the datepicker display.
 			@callback CalendarsPickerOnShow
 			@param picker {jQuery} The datepicker <code>div</code> to be shown.
@@ -304,7 +291,6 @@
 			alert('Hi!');
 		});
  } */
-
 		/** React to navigating through the months/years.
 			@callback CalendarsPickerOnChangeMonthYear
 			@param year {number} The new year.
@@ -312,7 +298,6 @@
 			@example onChangeMonthYear: function(year, month) {
 	alert('Now in ' + month + '/' + year);
  } */
-			
 		/** Datepicker on select callback.
 			Triggered when a date is selected.
 			@callback CalendarsPickerOnSelect
@@ -320,7 +305,6 @@
 			@example onSelect: function(dates) {
  	alert('Selected ' + dates);
  } */
-			
 		/** Datepicker on close callback.
 			Triggered when a popup calendar is closed.
 			@callback CalendarsPickerOnClose
@@ -328,7 +312,6 @@
 			@example onClose: function(dates) {
  	alert('Selected ' + dates);
  } */
-		
 		/** Default settings for the plugin.
 			@memberof CalendarsPicker
 			@property [calendar=$.calendars.instance()] {Calendar} The calendar for this datepicker.
@@ -425,7 +408,6 @@
 			commandsAsDateFormat: false,
 			commands: {} // this.commands
 		},
-
 		/** Localisations for the plugin.
 			Entries are objects indexed by the language code ('' being the default US/English).
 			Each object has the following attributes.
@@ -486,13 +468,10 @@
 				isRTL: false
 			}
 		},
-		
 		/** Names of getter methods - those that can't be chained.
 			@memberof CalendarsPicker */
 		_getters: ['getDate', 'isDisabled', 'isSelectable', 'retrieveDate'],
-
 		_disabled: [],
-		
 		_popupClass: 'calendars-popup', // Marker for popup division
 		_triggerClass: 'calendars-trigger', // Marker for trigger element
 		_disableClass: 'calendars-disable', // Marker for disabled element
@@ -500,13 +479,11 @@
 		_curMonthClass: 'calendars-month-', // Marker for current month/year
 		_anyYearClass: 'calendars-any-year', // Marker for year direct input
 		_curDoWClass: 'calendars-dow-', // Marker for day of week
-
 		_init: function() {
 			this.defaultOptions.commands = this.commands;
 			this.regionalOptions[''].renderer = this.defaultRenderer;
 			this._super();
 		},
-
 		_instSettings: function(elem, options) {
 			return {selectedDates: [], drawDate: null, pickingRange: false,
 				inline: ($.inArray(elem[0].nodeName.toLowerCase(), ['div', 'span']) > -1),
@@ -530,7 +507,6 @@
 				}
 			};
 		},
-
 		_postAttach: function(elem, inst) {
 			if (inst.inline) {
 				inst.drawDate = plugin._checkMinMax((inst.selectedDates[0] ||
@@ -550,7 +526,6 @@
 				}
 			}
 		},
-
 		_optionsChanged: function(elem, inst, options) {
 			if (options.calendar && options.calendar !== inst.options.calendar) {
 				var discardDate = function(name) {
@@ -576,7 +551,6 @@
 				this._update(elem[0]);
 			}
 		},
-
 		/** Attach events and trigger, if necessary.
 			@memberof CalendarsPicker
 			@private
@@ -609,7 +583,6 @@
 				this.setDate(elem[0], (defaultDate || inst.options.calendar.today()).newDate());
 			}
 		},
-
 		/** Apply the maximum length for the date format.
 			@memberof CalendarsPicker
 			@private
@@ -641,7 +614,6 @@
 					{localNumbers: inst.options.localnumbers}).length);
 			}
 		},
-
 		_preDestroy: function(elem, inst) {
 			if (inst.trigger) {
 				inst.trigger.remove();
@@ -654,7 +626,6 @@
 				elem.removeAttr('size');
 			}
 		},
-
 		/** Apply multiple event functions.
 			@memberof CalendarsPicker
 			@param fns {function} The functions to apply.
@@ -667,7 +638,6 @@
 				}
 			};
 		},
-
 		/** Enable the control.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to affect.
@@ -691,7 +661,6 @@
 			this._disabled = $.map(this._disabled,
 				function(value) { return (value === elem[0] ? null : value); }); // Delete entry
 		},
-
 		/** Disable the control.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to affect.
@@ -730,7 +699,6 @@
 				function(value) { return (value === elem[0] ? null : value); }); // Delete entry
 			this._disabled.push(elem[0]);
 		},
-
 		/** Is the first field in a jQuery collection disabled as a datepicker?
 			@memberof CalendarsPicker
 			@param elem {Element} The control to examine.
@@ -739,7 +707,6 @@
 		isDisabled: function(elem) {
 			return (elem && $.inArray(elem, this._disabled) > -1);
 		},
-
 		/** Show a popup datepicker.
 			@memberof CalendarsPicker
 			@param elem {Event|Element} a focus event or the control to use.
@@ -786,7 +753,6 @@
 				}
 			}
 		},
-
 		/** Extract possible dates from a string.
 			@memberof CalendarsPicker
 			@private
@@ -827,7 +793,6 @@
 			}
 			return dates;
 		},
-
 		/** Update the datepicker display.
 			@memberof CalendarsPicker
 			@private
@@ -866,7 +831,6 @@
 				}
 			}
 		},
-
 		/** Update the input field and any alternate field with the current dates.
 			@memberof CalendarsPicker
 			@private
@@ -900,7 +864,6 @@
 				}
 			}
 		},
-
 		/** Retrieve the size of left and top borders for an element.
 			@memberof CalendarsPicker
 			@private
@@ -913,7 +876,6 @@
 			return [parseFloat(convert(elem.css('border-left-width'))),
 				parseFloat(convert(elem.css('border-top-width')))];
 		},
-
 		/** Check positioning to remain on the screen.
 			@memberof CalendarsPicker
 			@private
@@ -966,7 +928,6 @@
 			offset.top = Math.max((isFixed ? 0 : scrollY), offset.top);
 			return offset;
 		},
-
 		/** Close date picker if clicked elsewhere.
 			@memberof CalendarsPicker
 			@private
@@ -981,7 +942,6 @@
 				plugin.hide(plugin.curInst);
 			}
 		},
-
 		/** Hide a popup datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element|object} The control to use or the current instance settings.
@@ -1025,7 +985,6 @@
 				}
 			}
 		},
-
 		/** Handle keystrokes in the datepicker.
 			@memberof CalendarsPicker
 			@private
@@ -1076,7 +1035,6 @@
 			}
 			return !handled;
 		},
-
 		/** Filter keystrokes in the datepicker.
 			@memberof CalendarsPicker
 			@private
@@ -1092,7 +1050,6 @@
 			}
 			return true;
 		},
-
 		/** Determine the set of characters allowed by the date format.
 			@memberof CalendarsPicker
 			@private
@@ -1139,7 +1096,6 @@
 			}
 			return allowedChars;
 		},
-
 		/** Synchronise datepicker with the field.
 			@memberof CalendarsPicker
 			@private
@@ -1161,7 +1117,6 @@
 			}
 			return true;
 		},
-
 		/** Increment/decrement month/year on mouse wheel activity.
 			@memberof CalendarsPicker
 			@private
@@ -1180,7 +1135,6 @@
 			}
 			event.preventDefault();
 		},
-
 		/** Clear an input and close a popup datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to use.
@@ -1199,7 +1153,6 @@
 				}
 			}
 		},
-
 		/** Retrieve the selected date(s) for a datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to examine.
@@ -1209,7 +1162,6 @@
 			var inst = this._getInst(elem);
 			return (!$.isEmptyObject(inst) ? inst.selectedDates : []);
 		},
-
 		/** Set the selected date(s) for a datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element} the control to examine.
@@ -1272,7 +1224,6 @@
 				}
 			}
 		},
-
 		/** Determine whether a date is selectable for this datepicker.
 			@memberof CalendarsPicker
 			@private
@@ -1291,7 +1242,6 @@
 			return this._isSelectable(elem, date, inst.options.onDate,
 				inst.get('minDate'), inst.get('maxDate'));
 		},
-
 		/** Internally determine whether a date is selectable for this datepicker.
 			@memberof CalendarsPicker
 			@private
@@ -1307,7 +1257,6 @@
 			return (dateInfo.selectable !== false) &&
 				(!minDate || date.toJD() >= minDate.toJD()) && (!maxDate || date.toJD() <= maxDate.toJD());
 		},
-
 		/** Perform a named action for a datepicker.
 			@memberof CalendarsPicker
 			@param elem {element} The control to affect.
@@ -1321,7 +1270,6 @@
 				}
 			}
 		},
-
 		/** Set the currently shown month, defaulting to today's.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to affect.
@@ -1343,7 +1291,6 @@
 				this._update(elem);
 			}
 		},
-
 		/** Adjust the currently shown month.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to affect.
@@ -1356,7 +1303,6 @@
 				this.showMonth(elem, date.year(), date.month());
 			}
 		},
-
 		/** Adjust the currently shown day.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to affect.
@@ -1369,7 +1315,6 @@
 				this.showMonth(elem, date.year(), date.month(), date.day());
 			}
 		},
-
 		/** Restrict a date to the minimum/maximum specified.
 			@memberof CalendarsPicker
 			@private
@@ -1382,7 +1327,6 @@
 			date = (maxDate && date.compareTo(maxDate) === +1 ? maxDate.newDate() : date);
 			return date;
 		},
-
 		/** Retrieve the date associated with an entry in the datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to examine.
@@ -1394,7 +1338,6 @@
 			return ($.isEmptyObject(inst) ? null : inst.options.calendar.fromJD(
 				parseFloat(target.className.replace(/^.*jd(\d+\.5).*$/, '$1'))));
 		},
-
 		/** Select a date for this datepicker.
 			@memberof CalendarsPicker
 			@param elem {Element} The control to examine.
@@ -1440,7 +1383,6 @@
 				}
 			}
 		},
-
 		/** Generate the datepicker content for this control.
 			@memberof CalendarsPicker
 			@private
@@ -1573,7 +1515,6 @@
 			}
 			return picker;
 		},
-
 		/** Generate the content for a single month.
 			@memberof CalendarsPicker
 			@private
@@ -1670,7 +1611,6 @@
 			return this._prepare(renderer.month, inst).replace(/\{monthHeader(:[^\}]+)?\}/g, monthHeader).
 				replace(/\{weekHeader\}/g, weekHeader).replace(/\{weeks\}/g, weeks);
 		},
-
 		/** Generate the HTML for the day headers.
 			@memberof CalendarsPicker
 			@private
@@ -1690,7 +1630,6 @@
 			}
 			return header;
 		},
-
 		/** Generate selection controls for month.
 			@memberof CalendarsPicker
 			@private
@@ -1788,7 +1727,6 @@
 			html = html.replace(/\\x2F/, selector);
 			return html;
 		},
-
 		/** Prepare a render template for use.
 			Exclude popup/inline sections that are not applicable.
 			Localise text of the form: {l10n:name}.
@@ -1822,12 +1760,9 @@
 			return text;
 		}
 	});
-
 	var plugin = $.calendarsPicker; // Singleton instance
-
 	$(function() {
 		$(document).on('mousedown.' + pluginName, plugin._checkExternalClick).
 			on('resize.' + pluginName, function() { plugin.hide(plugin.curInst); });
 	});
-
 })(jQuery);

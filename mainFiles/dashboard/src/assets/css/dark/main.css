@@ -12,7 +12,6 @@
 html {
   min-height: 100%;
 }
-
 body.dark {
   color: #888ea8;
   height: 100%;
@@ -30,27 +29,21 @@ body.dark a {
   text-decoration: none;
   background-color: transparent;
 }
-
 :focus {
   outline: none;
 }
-
 body.dark .dark-element {
   display: block;
 }
-
 .dark-element {
   display: none;
 }
-
 body.dark .light-element {
   display: none;
 }
-
 .light-element {
   display: block;
 }
-
 body.dark p {
   margin-top: 0;
   margin-bottom: 0.625rem;
@@ -458,7 +451,6 @@ body.dark .form-group label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
-
 @media (min-width: 1400px) {
   body.dark .container, .container-lg {
     max-width: 1440px;
@@ -489,20 +481,17 @@ input[type=search]::-webkit-search-results-button,
 input[type=search]::-webkit-search-results-decoration {
   display: none;
 }
-
 /* clears the 'X' from Internet Explorer */
 input[type=search]::-ms-clear {
   display: none;
   width: 0;
   height: 0;
 }
-
 input[type=search]::-ms-reveal {
   display: none;
   width: 0;
   height: 0;
 }
-
 /*      Form Group Label       */
 body.dark label {
   font-size: 15px;
@@ -511,7 +500,6 @@ body.dark label {
   display: inline-block;
   margin-bottom: 0.5rem;
 }
-
 /*  Disable forms     */
 body.dark .custom-control-input:disabled ~ .custom-control-label {
   color: #d3d3d3;
@@ -597,7 +585,6 @@ body.dark .form-check:not(.form-switch) .form-check-input:checked[type=checkbox]
 body.dark .form-check .form-check-input {
   margin-right: -1.6em;
 }
-
 /*      Form Control       */
 @supports (-webkit-overflow-scrolling: touch) {
   /* CSS specific to iOS devices */
@@ -610,7 +597,6 @@ body.dark .form-check-input:checked[type=checkbox]:not([role=switch]) {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 11' width='13' height='11' fill='none'%3e%3cpath d='M11.0426 1.02893C11.3258 0.695792 11.8254 0.655283 12.1585 0.938451C12.4917 1.22162 12.5322 1.72124 12.249 2.05437L5.51985 9.97104C5.23224 10.3094 4.72261 10.3451 4.3907 10.05L0.828197 6.88335C0.50141 6.59288 0.471975 6.09249 0.762452 5.7657C1.05293 5.43891 1.55332 5.40948 1.88011 5.69995L4.83765 8.32889L11.0426 1.02893Z' fill='%23FFFFFF'/%3e%3c/svg%3e");
   background-size: 60% 60%;
 }
-
 /*      Custom Select       */
 body.dark .form-select {
   height: auto;
@@ -1367,7 +1353,6 @@ body.dark .open > .dropdown-toggle.btn-warning.focus, body.dark .open > .dropdow
   background-color: #e2a03f;
   border-color: #e2a03f;
 }
-
 /*      Form Control File       */
 /*      Form Control Custom File       */
 /*      Input Group      */
@@ -1383,17 +1368,13 @@ body.dark {
       ====================
   */
   /*
-
       Hover
-
   */
   /*
       Hover and Striped
   */
   /*
-
       Striped
-
   */
   /*
       Striped and Bordered
@@ -3368,7 +3349,6 @@ body.dark .position-initial {
 body.dark .position-relative {
   position: relative;
 }
-
 /*
     Btn group dropdown-toggle
 */
@@ -3403,25 +3383,19 @@ body.dark .position-relative {
     ====================
 */
 /*
-
     Hover
-
 */
 /*
     Hover and Striped
 */
 /*
-
     Striped
-
 */
 /*
     Striped and Bordered
 */
 /*
-
     Bordered
-
 */
 /*
     Bordered and Hover

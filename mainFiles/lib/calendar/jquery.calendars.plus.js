@@ -3,9 +3,7 @@
    Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 (function($) { // Hide scope, no $ conflict
-
 	$.extend($.calendars.regionalOptions[''], {
 		invalidArguments: 'Invalid arguments',
 		invalidFormat: 'Cannot format a date from another calendar',
@@ -15,9 +13,7 @@
 		unexpectedText: 'Additional text found at end'
 	});
 	$.calendars.local = $.calendars.regionalOptions[''];
-
 	$.extend($.calendars.cdate.prototype, {
-
 		/** Format this date.
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof CDate
@@ -32,14 +28,11 @@
 			return this._calendar.formatDate(format || '', this, settings);
 		}
 	});
-
 	$.extend($.calendars.baseCalendar.prototype, {
-
 		UNIX_EPOCH: $.calendars.instance().newDate(1970, 1, 1).toJD(),
 		SECS_PER_DAY: 24 * 60 * 60,
 		TICKS_EPOCH: $.calendars.instance().jdEpoch, // 1 January 0001 CE
 		TICKS_PER_DAY: 24 * 60 * 60 * 10000000,
-
 		/** Date form for ATOM (RFC 3339/ISO 8601).
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof BaseCalendar */
@@ -96,7 +89,6 @@
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof BaseCalendar */
 		W3C: 'yyyy-mm-dd',
-
 		/** Format a date object into a string value.
 			The format can be combinations of the following:
 			<ul>
@@ -229,7 +221,6 @@
 			}
 			return output;
 		},
-
 		/** Parse a string value into a date object.
 			See <a href="#formatDate"><code>formatDate</code></a> for the possible formats, plus:
 			<ul>
@@ -382,7 +373,6 @@
 			}
 			return (jd > -1 ? this.fromJD(jd) : this.newDate(year, month, day));
 		},
-
 		/** A date may be specified as an exact value or a relative one.
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof BaseCalendar
@@ -436,5 +426,4 @@
 			return dateSpec;
 		}
 	});
-
 })(jQuery);
