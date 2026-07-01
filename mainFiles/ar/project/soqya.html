@@ -11,8 +11,8 @@
     <meta name="theme-color" content="#2865DD" />
     <!-- Share Meta Tags -->
     <title> مشروع سقيا عطاء - منصة عطاء </title>
-    <link rel="merchant-validation" href="home/error.html" />
-    <link rel="applePay-payment" href="home/error.html" />
+    
+    
     <link href="../../lib/calendar/BootstrapToggle/bootstrap-toggle.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../static/css/bootstrap.css" />
     <link rel="stylesheet" href="../../static/css/fontawesome.css" />
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../static/css/home.css">
     <link href="../../static/css/cards.css" rel="stylesheet" />
     <link href="../../static/css/orphanages.css" rel="stylesheet" />
-    <script src="/global/header-injection.js" defer></script>
+    <script src="../../global/header-injection.js" defer></script>
 <!-- Google Tag Manager -->
         <style>
         .steps .count {
@@ -179,9 +179,9 @@
             right: 15px;
             z-index: 99;
             background: transparent !important;
-            /* background-color: #14c555; */
+
             border-radius: 50px;
-            /* color: #ffffff; */
+
             text-decoration: none;
             width: 70px;
             height: 70px;
@@ -190,17 +190,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* -webkit-box-shadow: 0px 0px 25px -6px rgba(0,0,0,1); */
-            /* -moz-box-shadow: 0px 0px 25px -6px rgba(0,0,0,1); */
-            /* box-shadow: 0px 0px 25px -6px rgba(0,0,0,1); */
+            
             animation: effect 5s infinite ease-in;
-            /* transition: .5s all; */
+
         }
         .whatsapp-button:hover{
             animation: none;
-            /* -webkit-box-shadow: 0px 0px 25px -10px rgba(0,0,0,1); */
-            /* background-color: #08a140; */
-            /* color: #fff; */
+
             transition: .7s all;
             border: 1px solid #505050;
         }
@@ -3235,7 +3231,7 @@
 <script src="../../assets/js/common1cfa.js"></script>
 <script src="../../lib/calendar/jquery.plugin.js"></script>
 <!--<-- Use instead of calendars, plus, and picker below -->
-<script src="../../lib/calendar/jquery.calendars.js"></script>
+
 <script src="../../lib/calendar/jquery.calendars.plus.js"></script>
 <script src="../../lib/calendar/jquery.calendars.picker.js"></script>
 <script src="../../lib/calendar/jquery.calendars.ummalqura.js"></script>
@@ -3264,68 +3260,7 @@
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) { return new bootstrap.Tooltip(tooltipTriggerEl) });
     //Display Loading Message to Screen Readers.
     if (document.readyState == 'loading') $('#srNotificationArea').attr('aria-live', 'assertive').html('يجري تحميل الصفحة');
-    function handleAmountEditOnChange(parent) {
-        var inputElem = $(parent + " .payment-info-box .amount");
-        var inputValue = +inputElem.val();
-        var minValue = 50;
-        var maxValue = 100000;
-        if (inputValue < minValue) {
-            inputValue = minValue;
-        } else if (inputValue > maxValue) {
-            inputValue = maxValue;
-        }
-        inputElem.val(inputValue);
-        $('#editAmountBtn').attr('aria-label', 'المبلغ: ' + inputValue + ' درهم مغربي. اضغط لتعديل مبلغ التبرع');
-        $(parent + " .payment-info-box .amount-display").html(inputValue);
-        $("#qd_amount").val(inputValue);
-        let amountQuick = $('.amount-quick');
-        let qd_amount = $('.qd_amount');
-        if (amountQuick.length) {
-            amountQuick.each(function (index, element) {
-                $(element).html(inputValue);
-            });
-        }
-        if (qd_amount.length) {
-            qd_amount.each(function (index, element) {
-                $(element).val(inputValue);
-            });
-        }
-        $(parent + " .payment-info-box .amount-display").addClass("toggle-hide");
-    }
-    function showInputAmount(parent) {
-        var inputElem = $(parent + " .payment-info-box input");
-        var amountDisplayElem = $(parent + " .payment-info-box .amount-display");
-        if (!inputElem.hasClass("error") && !$(parent + " .payment-info-box").hasClass("editing")) {
-            if (inputElem.hasClass("toggle-hide")) {
-                inputElem.removeClass("toggle-hide").attr('aria-hidden', 'false').attr('tabindex', '0');
-                setTimeout(function () { inputElem.focus(), 200 });
-                amountDisplayElem.addClass("toggle-hide");
-                $(parent + " .payment-info-box").addClass("editing");
-            }
-        }
-    }
-    function hideInputAmount(parent) {
-        var inputElem = $(parent + " .payment-info-box input");
-        var amountDisplayElem = $(parent + " .payment-info-box .amount-display");
-        var amount = +$("#qd_amount_modified").val();
-        var minValue = 50;
-        var maxValue = 100000;
-        if (amount < minValue) {
-            amount = minValue;
-        } else if (amount > maxValue) {
-            amount = maxValue;
-        }
-        $("#qd_amount_modified").val(amount);
-        $("#qd_amount_edited").val(amount);
-        if (!inputElem.hasClass("error")) {
-            inputElem.addClass("toggle-hide").attr('aria-hidden', 'true').attr('tabindex', '-1');
-            amountDisplayElem.removeClass("toggle-hide");
-            setTimeout(function () {
-                $(parent + " .payment-info-box").removeClass("editing");
-                $('#editAmountBtn').focus();
-            }, 200);
-        }
-    }
+    
     var addCartToStorage = function (cartObj) {
         var cartStr = JSON.stringify(cartObj);
         sessionStorage.setItem("ihsan_cart", cartStr);
@@ -3507,31 +3442,7 @@
             $("#qd_amount").val(amount);
             $("#qd_amount").trigger("change");
         });
-        // $(document).on("click", ".ghiras_share", function (e) {
-        //     e.stopPropagation();
-        //     e.preventDefault();
-        //     var dataSets = $(e.currentTarget).data();
-        //     var urlRout = '/all/share?caseid=' + dataSets.caseid + '&initiativetype=' + dataSets.casetype + '&casename=' + dataSets.casetitle + '&campaigncreatorid=' + dataSets.campaigncreatorid + '';
-        //     if (dataSets.caseid) {
-        //         $.ajax({
-        //             type: "Get",
-        //             url: urlRout,
-        //             success: function (response) {
-        //                 var result = response;
-        //                 var describtion = `أجر لك وأجر لي %0aساهم معي في التبرع لـ (${dataSets.casetitle}) عبر %23منصة_إحسان:`;
-        //                 $("#facebookShareLink").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + result + "&quote=" + describtion);
-        //                 $("#twitterShareLink").attr("href", "https://twitter.com/intent/tweet?url=" + " " + result + "&text=" + describtion + "&hashtags=");
-        //                 $("#whatsappShareLink").attr("href", "https://wa.me/?text=" + describtion + "%0a" + result);
-        //                 $("#ghiras_link_text").val(result);
-        //                 var myModal = document.getElementById('share-modal');
-        //                 var modal = bootstrap.Modal.getOrCreateInstance(myModal)
-        //                 modal.show()
-        //             },
-        //             error: function (err) {
-        //             }
-        //         });
-        //     }
-        // });
+        
         $("body").on("keydown keyup change", "input.cart-amount", function (e) {
             var maxvalue = parseInt($(this).closest(".card").find('.MaxValueBoxValue').text().replace(/,/g, ""))
             if ($(this).val() > maxvalue
