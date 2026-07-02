@@ -569,10 +569,6 @@
 .img-holder {
     margin-block-end: 26px;
 }
-.cart-placeholder-image {
-    margin-inline-end: auto;
-    margin-inline-start: 21px;
-}
 .verification-inputs input {
     margin-inline-end: 5px;
 }
@@ -581,10 +577,6 @@
     color: #1878CE;
     font-size: 18px;
     font-weight: 700;
-}
-.already-donate .removeFromCart,
-.already-donate-subsidy .removeFromCart {
-    font-family: BerytusW23SemiBold;
 }
 .img-to-white {
     filter: brightness(0) invert(1);
@@ -8492,63 +8484,6 @@ h6 {
     inset-inline-end: 20px;
     position: absolute;
 }
-.login-icon {
-    background-image: linear-gradient(45deg, #068571, #1878CE);
-    border-radius: 50%;
-    color: #fff;
-    font-size: 58px;
-    height: 109px;
-    line-height: 106px;
-    margin: auto;
-    width: 109px;
-}
-.login .card {
-    border: none;
-    border-radius: 15px;
-}
-.login .register-link {
-    font-size: 14px;
-    margin-block-start: 14px;
-}
-.login .elipse-bg {
-    background: url(../images/Ellipse51.svg);
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-.login .elipse-bg img {
-    padding: 17px;
-}
-.login a {
-    color: #1878CE;
-    margin-inline-start: 8px;
-    text-decoration: underline;
-}
-.login .resend,
-.login h6 {
-    font-size: 12px;
-}
-.login .resend i {
-    font-size: 10px;
-}
-.login h3 {
-    font-size: 26px;
-}
-.login .field-validation-error {
-    width: 90%;
-}
-.login .input-validation-error {
-    background: #fff;
-    border: 1px solid #e58494 !important;
-}
-.login :not(.verification-inputs) input:focus {
-    border: 1.5px solid #06b085;
-    box-shadow: none;
-    outline: none;
-}
-.login input.valid {
-    border: 1px solid #a4d171 !important;
-}
 .header_bread {
     margin-block-start: 9rem;
 }
@@ -8605,64 +8540,6 @@ h6 {
     background: #fff;
     border: 1px solid #a4d171 !important;
 }
-.already-donate .removeFromCart {
-    background-color: #fff;
-    border: none;
-    color: #ccc;
-    cursor: pointer;
-    font-family: BerytusW23Regular;
-    font-size: 12px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 500;
-    height: 30px;
-    letter-spacing: normal;
-    line-height: 36px;
-    outline: none;
-    text-align: center;
-    width: 80px;
-}
-.already-donate .removeFromCart:focus,
-.already-donate .removeFromCart:hover {
-    color: #1878CE;
-    outline: none;
-}
-.already-donate .addedToCart {
-    background-color: #ccc;
-    border-radius: 28px;
-    color: #fff;
-    height: 37px;
-    width: 100%;
-}
-.already-donate-subsidy .removeFromCart {
-    background-color: #fff;
-    border: none;
-    color: #ccc;
-    cursor: pointer;
-    font-family: BerytusW23Regular;
-    font-size: 12px;
-    font-stretch: normal;
-    font-style: normal;
-    font-weight: 500;
-    height: 30px;
-    letter-spacing: normal;
-    line-height: 36px;
-    outline: none;
-    text-align: center;
-    width: 80px;
-}
-.already-donate-subsidy .removeFromCart:focus,
-.already-donate-subsidy .removeFromCart:hover {
-    color: #1878CE;
-    outline: none;
-}
-.already-donate-subsidy .addedToCart {
-    background-color: #ccc;
-    border-radius: 28px;
-    color: #fff;
-    height: 37px;
-    width: 100%;
-}
 .card h6 {
     font-size: 17px;
     font-weight: 600;
@@ -8711,43 +8588,6 @@ h6 {
 .field-validation-error span {
     display: inline-block;
     margin-block-start: 5px;
-}
-.cart .price-details {
-    font-size: 15px !important;
-    position: relative;
-}
-.cart .price-details .field-validation-error {
-    inset-block-start: 95%;
-    position: absolute;
-}
-.cart.donations .card {
-    font-size: 15px;
-}
-.cart .card.total-amount {
-    border-radius: 23px;
-}
-.cart .card.total-amount h6 {
-    font-size: 20px;
-    font-weight: 700;
-}
-.cart .card.total-amount .amount-unit {
-    font-size: 24px;
-}
-.cart .card.total-amount .amount-unit #cart_total {
-    font-size: 28px;
-}
-.cart .card.total-amount .separator-vertical {
-    background-color: #f2f2f2;
-    height: 1px;
-    margin: 30px 0;
-    width: 100%;
-}
-.cart .card.total-amount .btn-primary-blue {
-    font-size: 18px;
-    font-weight: 600;
-    margin-inline-start: auto;
-    padding: 8px 80px;
-    width: max-content;
 }
 .donut-chart {
     height: 60px;
@@ -9096,13 +8936,6 @@ h6 {
     position: relative;
     text-align: center;
     width: 165px;
-}
-.custom-payment-a {
-    height: 30px;
-    width: 55px;
-}
-.custom-payment-a-img {
-    width: 55px !important;
 }
 .custom_answer_span {
     color: #1878CE;
@@ -9525,11 +9358,6 @@ button.collapsed .custom_question_icon {
     background: #1878CE;
     height: 100%;
 }
-.cart-placeholder-image {
-    height: 60px;
-    inset-inline: -21px auto;
-    margin-block-start: 9px;
-}
 @keyframes gradient {
     0% {
         background-position: 0 50%;
@@ -9900,98 +9728,6 @@ img {
 .gift-icon {
     margin-block-start: -9px;
 }
-.Payment-details-page .payment-info .gift-box {
-    background-color: rgba(64, 157, 160, 0.1);
-}
-.Payment-details-page .payment-info .gift-box > label {
-    color: #409da0;
-}
-.Payment-details-page .payment-info .gift-box > img {
-    vertical-align: text-top;
-    width: 15px;
-}
-.Payment-details-page .payment-info .card-header {
-    border-color: #10a7894f;
-    border-radius: 20px 20px 0 0;
-}
-.Payment-details-page .payment-info .card-header img {
-    inset-block-start: 1px;
-    inset-inline-end: 18px;
-    position: absolute;
-}
-.Payment-details-page .payment-info .cart-items {
-    list-style: none;
-    padding: 15px 0 0;
-}
-.Payment-details-page .payment-info .cart-items li {
-    display: flex;
-    font-size: 18px;
-    justify-content: space-between;
-}
-.Payment-details-page .payment-info .cart-items li:not(:last-of-type) {
-    margin-block-end: 15px;
-}
-.Payment-details-page .amount-details .title {
-    font-size: 24px;
-    margin-block-end: 42px;
-}
-.Payment-details-page .amount-details .amount {
-    font-size: 32px;
-    margin: 40px 0 30px;
-}
-.Payment-details-page .amount-details .user-details {
-    font-size: 22px;
-    margin: 30px 0 43px;
-}
-.Payment-details-page .amount-details .user-details > div:first-of-type {
-    margin-block-end: 40px;
-}
-.Payment-details-page .amount-details .sep-4 {
-    margin-block-end: 22px;
-}
-.Payment-details-page .apple-pay {
-    border-radius: 4px;
-    padding: 5px 15px;
-    width: 100%;
-}
-.Payment-details-page .card-icon {
-    align-items: center;
-    background: #e9ecef;
-    border-end-end-radius: 4px;
-    border-inline-start: 2px solid #d1d1d1;
-    border-radius: 0.65rem 0 0 0.65rem !important;
-    border-start-end-radius: 4px;
-    display: flex;
-    height: 35px;
-    inset-block-start: 0.9px;
-    inset-inline-end: 0;
-    justify-content: center;
-    position: absolute;
-}
-.Payment-details-page .card-icon-image {
-    margin: 9% 8px;
-    max-height: 70%;
-    max-width: 30px;
-}
-.Payment-details-page .line-with-words {
-    margin-block-end: 25px;
-    margin-block-start: 15px;
-}
-.Payment-details-page .line-with-words .title {
-    font-family: BerytusW23SemiBold;
-    font-size: 16px;
-    font-weight: 600;
-}
-.Payment-details-page .line-with-words.page-title .title {
-    font-size: 20px;
-    font-weight: 600;
-}
-.Payment-details-page .user-details .name {
-    margin-inline-start: 30px;
-}
-.Payment-details-page .payment .card-holder-name {
-    text-transform: uppercase;
-}
 .view-all-link {
     position: relative;
 }
@@ -10132,64 +9868,6 @@ img {
 .arabic-list-style > li:nth-child(10):before {
     content: ".ى";
 }
-.payment-details .creditCardForm .heading {
-    margin-block-end: 7px;
-}
-.payment-details .creditCardForm .heading h4 {
-    color: #31616e;
-    font-size: 22px;
-    margin: 0;
-}
-.payment-details .creditCardForm .sep-1 {
-    margin-block-end: 47px;
-}
-.payment-details .creditCardForm label {
-    color: #1878CE;
-    font-size: 16px;
-    font-weight: 600;
-    margin-block-end: 12px;
-}
-.payment-details .creditCardForm .already-member {
-    color: #b8b8b8;
-    font-size: 13px;
-    margin-block-end: 20px;
-}
-.payment-details .creditCardForm .expiry-dates {
-    max-width: 40%;
-    width: 170px;
-}
-.payment-details .creditCardForm .expiry-dates .card-dates {
-    display: flex;
-}
-.payment-details .creditCardForm .expiry-dates .card-dates #expYear {
-    border-end-start-radius: 0;
-    border-start-start-radius: 0;
-    margin-inline-start: -2px;
-    width: 50%;
-}
-.payment-details .creditCardForm .expiry-dates .card-dates #expMonth {
-    border-end-end-radius: 0;
-    border-start-end-radius: 0;
-    width: 50%;
-}
-.payment-details .creditCardForm .custom-checkbox-round .custom-control-label {
-    margin-block-end: 15px;
-}
-.payment-details .payment {
-    margin-block-end: 25px;
-}
-.payment-details .form-group {
-    margin-block-end: 22px;
-    position: relative;
-}
-.payment-details .form-group .error {
-    color: #e0394a;
-    font-size: 14px;
-}
-.payment-details .form-group input.error,
-.payment-details .form-group select.error {
-    color: #495057;
-}
 .creditCardForm .already-member {
     color: #b8b8b8;
     font-size: 13px;
@@ -10224,11 +9902,6 @@ img {
 }
 .creditCardForm .custom-checkbox-round .custom-control-label {
     margin-block-end: 15px;
-}
-.creditCardForm .payment-info-box input.error ~ span ~ span .amount-display {
-    inset-block-start: -300px;
-    position: fixed;
-    z-index: -1;
 }
 .fixed-side-menu {
     inset-block-start: 165px;
@@ -10326,22 +9999,6 @@ img {
 .fixed-side-menu .price-box {
     border-block-end: 1px dotted #ccc;
     margin-block-end: 8px;
-}
-.fixed-side-menu .payment-info-box {
-    background: #DF9D69;
-    background: linear-gradient(270deg, #1878CE 0, #DF9D69 110%);
-    border-radius: 9px;
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 15px;
-}
-.fixed-side-menu .payment-info-box .edit-amount-btn {
-    color: inherit;
-    font-size: inherit;
-    padding: 0;
-}
-.fixed-side-menu .payment-info-box .amount-display {
-    font-size: 24px;
 }
 .fixed-side-menu .clickable {
     cursor: pointer;
@@ -10457,9 +10114,6 @@ img {
     margin-block-end: 16px;
     margin-block-start: 10px;
 }
-.fixed-side-menu .payment .card-holder-name {
-    text-transform: uppercase;
-}
 .fixed-side-menu .field-validation-error span {
     color: #e0394a;
     font-weight: 500;
@@ -10543,11 +10197,6 @@ img {
 .donations .items .card i {
     color: #cecece;
 }
-.donations .Payment-details-page .apple-pay {
-    margin: 10px auto 0;
-    padding: 18px 0;
-    width: 190px;
-}
 .nav-tabs {
     border-block-end: 1.5px solid #dee2e6;
 }
@@ -10610,69 +10259,9 @@ img {
 .shared-links .message-box {
     font-size: 14px;
 }
-.payment {
-    color: #003b4c;
-}
-.payment .separator {
-    background-color: #ccc;
-    height: 1px;
-    width: 100%;
-}
-.payment .user-details {
-    font-size: 14px;
-}
-.payment .amount {
-    font-size: 20px;
-}
-.payment .card-details {
-    font-size: 13px;
-}
-.payment .card-details .card-images .img-container {
-    border: 2px solid transparent;
-    border-radius: 5px;
-}
-.payment .card-details .card-images .active {
-    border: 2px solid #1878CE;
-}
-.payment .card-details .card-info input {
-    border: 0;
-    color: #1878CE;
-    font-weight: 100;
-    line-height: 30px;
-    outline: 0;
-    width: 100%;
-}
-.payment .card-details .card-info input:focus {
-    border-color: #1878CE !important;
-}
-.payment h6.title {
-    font-size: 14px;
-}
 .center-items-vertically {
     align-items: center;
     display: flex;
-}
-#cart {
-    border-inline-start: 1px solid rgba(0, 0, 0, 0.12);
-    position: relative;
-    text-align: center;
-}
-#cart .badge {
-    background: #ffab00;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    color: #fff;
-    font-family: BerytusW23SemiBold;
-    font-size: 12px;
-    height: 18px;
-    inset-block-start: -5px;
-    inset-inline-start: 10px;
-    min-width: 18px;
-    padding: 2px;
-    position: absolute;
-}
-#cart_total {
-    font-size: 22px;
 }
 .cursor-pointer {
     cursor: pointer !important;
@@ -12548,24 +12137,6 @@ div[class*="card-donors-"] img {
     border-color: #1878CE !important;
     border-width: 2px !important;
 }
-#PaymentTabs.nav-tabs .nav-link {
-    background: #f7f7f7;
-    border: none;
-    border-block-start: 4px solid #dfe1e5;
-    border-radius: 0;
-    border-start-end-radius: 3px;
-    border-start-start-radius: 3px;
-    box-shadow: inset -2px -2px 8px rgba(0, 0, 0, 0.1);
-    color: #6c757d;
-    font-family: BerytusW23SemiBold;
-    text-align: center;
-}
-#PaymentTabs.nav-tabs .nav-link.active {
-    background: #fff;
-    border-color: #1878CE;
-    box-shadow: none;
-    color: #1878CE;
-}
 .tysarat-btns {
     border-start-end-radius: 70px;
     border-start-start-radius: 70px;
@@ -12794,22 +12365,6 @@ div[class*="card-donors-"] img {
     .DonationCasesLabel {
         display: none;
     }
-    .login input::-webkit-input-placeholder {
-        color: #1878CE;
-        opacity: 1;
-    }
-    .login input:-moz-placeholder {
-        color: #1878CE;
-        opacity: 1;
-    }
-    .login input:-ms-input-placeholder {
-        color: #1878CE;
-        opacity: 1;
-    }
-    /*.contact-main {*/
-    /*    background-image: url(../../assets/imgs/shaps/blue_chart.svg);*/
-    /*    background-position: 5px 0, 0 0, 0 -289px;*/
-    /*}*/
     .about-main h1 {
         font-size: 4rem;
     }
@@ -13071,32 +12626,6 @@ div[class*="card-donors-"] img {
     .footer-large .content-4 {
         padding: 8px 0;
     }
-    .payment-details .creditCardForm .heading {
-        margin-block-end: 15px;
-    }
-    .payment-details .creditCardForm .already-member {
-        font-size: 12px;
-        margin-block-end: 15px;
-    }
-    .payment-details .creditCardForm input {
-        font-size: 13px;
-        padding: 5px;
-    }
-    .payment-details .creditCardForm .expiry-dates {
-        max-width: 50%;
-    }
-    .payment-details .creditCardForm .cvv {
-        width: 130px;
-    }
-    .payment-details
-        .creditCardForm
-        .custom-checkbox-round
-        .custom-control-label {
-        margin-block-end: 10px;
-    }
-    .payment-details .bg-gradient {
-        font-size: 16px;
-    }
     .creditCardForm .heading {
         margin-block-end: 15px;
     }
@@ -13114,30 +12643,10 @@ div[class*="card-donors-"] img {
     .creditCardForm .custom-checkbox-round .custom-control-label {
         margin-block-end: 10px;
     }
-    .Payment-details-page .card-icon {
-        height: 30px;
-        inset-block-start: 0;
-        inset-inline-end: 0;
-    }
-    .Payment-details-page .amount-details .title {
-        font-size: 20px;
-        margin-block-end: 28px;
-    }
-    .Payment-details-page .amount-details .amount {
-        font-size: 20px;
-        margin: 25px 0;
-    }
-    .Payment-details-page .amount-details .user-details {
-        font-size: 16px;
-        margin: 25px 0 32px;
-    }
-    .Payment-details-page .amount-details .user-details > div:first-of-type {
-        margin-block-end: 25px;
-    }
     .fixed-side-menu .card-icon {
         height: 28.6px;
     }
-    .fixed-side-menu .payment-info-box {
+    .fixed-side-menu {
         padding: 5px 15px;
         width: auto;
     }
@@ -13319,13 +12828,6 @@ div[class*="card-donors-"] img {
     .subBtns button {
         width: 95%;
     }
-    .login i {
-        background: #fff;
-        margin-block-end: 0 !important;
-    }
-    .login .txt-dark-green {
-        color: #ffe082;
-    }
     .withScrollContent {
         margin-block-start: 20px;
     }
@@ -13462,13 +12964,6 @@ div[class*="card-donors-"] img {
     .swiper-container .btn-white {
         font-size: 16px;
     }
-    .payment-methods img {
-        max-width: 63px;
-    }
-    #cart .badge {
-        inset-block-start: -7px;
-        inset-inline-start: -5px;
-    }
 }
 @media (max-width: 575px) {
     .org-logo-wrapper {
@@ -13490,18 +12985,6 @@ div[class*="card-donors-"] img {
     }
     .mobile-profile-actions {
         display: block;
-    }
-    .payment-details .cards-logo {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .payment-details .cards-logo img {
-        margin-block-start: 10px;
-    }
-    .payment-details form input.error {
-        border: 1px solid #f25e09;
     }
     .footer-large .content-3 {
         padding: 14px 0;
@@ -13540,22 +13023,6 @@ div[class*="card-donors-"] img {
     .avatar-icon svg {
         margin: 0 auto;
     }
-    .cart .card.total-amount .btn-primary-blue {
-        margin: auto;
-    }
-    .Payment-details-page .payment-info .payment-sum .amount {
-        font-size: 32px;
-        margin: 0 5px;
-    }
-    .Payment-details-page .payment-info .payment-sum .unit {
-        font-size: 22px;
-    }
-    .Payment-details-page .payment-info .payment-sum .title {
-        font-size: 18px;
-    }
-    .Payment-details-page .payment-info .cart-items {
-        padding: 15px 0 10px;
-    }
 }
 @media (max-width: 320px) {
     .sms-donation-bg__hand {
@@ -13568,24 +13035,6 @@ div[class*="card-donors-"] img {
     .campaign-stats .card {
         padding-inline-start: 3rem;
     }
-}
-.housing-cards .btn.addToCart {
-    aspect-ratio: 1;
-    border-radius: 50%;
-    display: grid;
-    height: 35px;
-    place-content: center;
-}
-.already-donate {
-    display: none;
-}
-.added-to-cart .already-donate {
-    display: flex !important;
-}
-.added-to-cart .addToCart,
-.added-to-cart .donate-now,
-.added-to-cart .price-details:not(.d-flex) {
-    display: none !important;
 }
 .font-weight-semibold {
     font-family: BerytusW23SemiBold;
